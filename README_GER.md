@@ -1,145 +1,145 @@
 # DBI 
-![Github latest downloads](https://img.shields.io/github/downloads/rashevskyv/dbi/total.svg)
+![Github neueste Downloads](https://img.shields.io/github/downloads/rashevskyv/dbi/total.svg)
 
-This guide is based on [Brikachu's work](https://4pda.to/forum/index.php?showtopic=939714&st=1100#Spoil-86288632-5).
+Diese Anleitung basiert auf [Brikachu's Arbeit](https://4pda.to/forum/index.php?showtopic=939714&st=1100#Spoil-86288632-5).
 
-[РУССКИЙ / Russian guide](README.md)
+[Englische Anleitung](README_ENG.md)
 
-The ultimate solution to install `NSP`, `NSZ`, `XCI` and `XCZ` and work with Nintendo Switch. Supports installation over MTP, USB, http (from your personal server), external USB and more. Support for viewing images in `jpg`, `png` and `psd` formats. Support for working with `zip` and `rar` archives, as well as with `cbr`/`cbz` containers. Support for text files, plain text view and hex view. Can be used as a file manager (copy, move, delete files and folders, create folders). Work with saves (including backup and restore) and much more.
+Die ultimative Lösung zum Installieren von `NSP`, `NSZ`, `XCI` und `XCZ` und zum Arbeiten mit Nintendo Switch. Unterstützt Installation über MTP, USB, http (von Ihrem persönlichen Server), externem USB und mehr. Unterstützung zum Anzeigen von Bildern in den Formaten `jpg`, `png` und `psd`. Unterstützung für die Arbeit mit `zip`- und `rar`-Archiven sowie mit `cbr`/`cbz`-Containern. Unterstützung für Textdateien, einfache Textansicht und Hex-Ansicht. Kann als Dateimanager verwendet werden (Kopieren, Verschieben, Löschen von Dateien und Ordnern, Erstellen von Ordnern). Arbeit mit Speicherständen (einschließlich Backup und Wiederherstellung) und vieles mehr.
 
-## Content: 
+## Inhalt: 
 
 1. [Installation](#installation)
-1. [Usage](#usage)
-  1. [Interface](#interface)
-  1. [Buttons](#buttons)
-  1. [Browse SD Card / Browse USB0 Drive](#browse-sd-card--browse-usb0-drive)
-  1. [Install title from DBIbackend](#install-title-from-dbibackend)
-  1. [Home server](#home-server)
-  1. [Browse installed applications](#browse-installed-applications)
-     * [Titles Context menu](#title-context-menu)
-     * [Detailed game menu](#detailed-game-menu)
-      * [Content records](#content-records)
+1. [Verwendung](#verwendung)
+  1. [Benutzeroberfläche](#benutzeroberfläche)
+  1. [Tasten](#tasten)
+  1. [SD-Karte durchsuchen / USB0-Laufwerk durchsuchen](#sd-karte-durchsuchen--usb0-laufwerk-durchsuchen)
+  1. [Titel von DBIbackend installieren](#titel-von-dbibackend-installieren)
+  1. [Heimserver](#heimserver)
+  1. [Installierte Anwendungen durchsuchen](#installierte-anwendungen-durchsuchen)
+     * [Titel-Kontextmenü](#titel-kontextmenü)
+     * [Detailliertes Spielmenü](#detailliertes-spielmenü)
+      * [Inhaltsdatensätze](#inhaltsdatensätze)
       * [Tickets](#tickets)
-      * [Saves](#saves)
-     * [Records Context menu](#records-context-menu)
-  1. [Browse tickets](#browse-tickets)
-     * [Tickets context menu](#tickets-context-menu)
-  1. [Tools](#tools)
-  1. [Browse saves](#browse-saves)
-      * [Context menu Installed and Uninstalled](#context-menu-installed-and-uninstalled)
-      * [Backups context menu](#backups-context-menu)
-  1. [Run MTP responder](#run-mtp-responder)
-  1. [Activity Log](#activity-log)
-    * [Applications](#applications)
-    * [Activity](#activity)
-  1. [Configuration and dbi.config parameters](#configuration-and-dbiconfig-parameters)
-     * [General (`[General]`)](#general-general)
-     * [Main menu (`[MainMenu]`)](#main-menu-mainmenu)
-     * [Applications (`[Applications]`)](#applications-applications)
-     * [Install options (`[Install]`)](#install-options-install)
-     * [MTP options (`[MTP]`)](#mtp-options-mtp)
-     * [MTP storages (`[MTP Storages]`)](#mtp-storages-mtp-storages)
-     * [FTP options (`[FTP]`)](#ftp-options-ftp)
-     * [Access point (`[Access point]`)](#access-point-access-point)
-     * [Exists in Config, but not in menu](#exists-in-config-but-not-in-menu)
-      * [Network sources](#network-sources)
-      * [Local sources](#local-sources)
-      * [MTP custom storages](#mtp-custom-storages)
-      * [Title name override](#title-name-override)
-  1. [Exit](#exit)
-1. [Warnings and Errors](#warnings-and-errors)
-	1. [Warnings](#warnings)
-	1. [Errors](#errors)
-   1. [Color codes](#color-codes)
+      * [Speicherstände](#speicherstände)
+     * [Datensatz-Kontextmenü](#datensatz-kontextmenü)
+  1. [Tickets durchsuchen](#tickets-durchsuchen)
+     * [Tickets-Kontextmenü](#tickets-kontextmenü)
+  1. [Werkzeuge](#werkzeuge)
+  1. [Speicherstände durchsuchen](#speicherstände-durchsuchen)
+      * [Kontextmenü Installiert und Deinstalliert](#kontextmenü-installiert-und-deinstalliert)
+      * [Backups-Kontextmenü](#backups-kontextmenü)
+  1. [MTP-Responder ausführen](#mtp-responder-ausführen)
+  1. [Aktivitätsprotokoll](#aktivitätsprotokoll)
+    * [Anwendungen](#anwendungen)
+    * [Aktivität](#aktivität)
+  1. [Konfiguration und dbi.config-Parameter](#konfiguration-und-dbiconfig-parameter)
+     * [Allgemein (`[Allgemein]`)](#allgemein-allgemein)
+     * [Hauptmenü (`[Hauptmenü]`)](#hauptmenü-hauptmenü)
+     * [Anwendungen (`[Anwendungen]`)](#anwendungen-anwendungen)
+     * [Installationsoptionen (`[Installation]`)](#installationsoptionen-installation)
+     * [MTP-Optionen (`[MTP]`)](#mtp-optionen-mtp)
+     * [MTP-Speicher (`[MTP-Speicher]`)](#mtp-speicher-mtp-speicher)
+     * [FTP-Optionen (`[FTP]`)](#ftp-optionen-ftp)
+     * [Zugangspunkt (`[Zugangspunkt]`)](#zugangspunkt-zugangspunkt)
+     * [Existiert in der Konfiguration, aber nicht im Menü](#existiert-in-der-konfiguration-aber-nicht-im-menü)
+      * [Netzwerkquellen](#netzwerkquellen)
+      * [Lokale Quellen](#lokale-quellen)
+      * [Benutzerdefinierte MTP-Speicher](#benutzerdefinierte-mtp-speicher)
+      * [Titelname überschreiben](#titelname-überschreiben)
+  1. [Beenden](#beenden)
+1. [Warnungen und Fehler](#warnungen-und-fehler)
+	1. [Warnungen](#warnungen)
+	1. [Fehler](#fehler)
+   1. [Farbcodes](#farbcodes)
 1. [dbi.config](#dbiconfig)
-1. [Other options](#other-options)
-      * [Mounting the content of installed titles via MTP](#монтирование-содержимого-установленных-игр-по-mtp)
-      * [Backup and Restore Saves via MTP](#бекап-и-восстановление-сохранений-по-mtp)
-      * [Using DBI to Install Mods](#использование-dbi-для-установки-модификаций)
+1. [Andere Optionen](#andere-optionen)
+      * [Einbinden des Inhalts installierter Titel über MTP](#einbinden-des-inhalts-installierter-titel-über-mtp)
+      * [Backup und Wiederherstellung von Speicherständen über MTP](#backup-und-wiederherstellung-von-speicherständen-über-mtp)
+      * [Verwenden von DBI zum Installieren von Mods](#verwenden-von-dbi-zum-installieren-von-mods)
       * [USB 3.0](#usb-30)
-      * [Restoring clean user saves from backup](#восстановление-бекапа-чистых-пользовательских-сохранений)
-      * [Set picture as avatar](#set-picture-as-avatar)
-      * [Editing and Viewing Files](#editing-and-viewing-files)
-1. [Acknowledgements](#acknowledgements)
+      * [Wiederherstellen sauberer Benutzerspeicherstände aus dem Backup](#wiederherstellen-sauberer-benutzerspeicherstände-aus-dem-backup)
+      * [Bild als Avatar festlegen](#bild-als-avatar-festlegen)
+      * [Dateien bearbeiten und anzeigen](#dateien-bearbeiten-und-anzeigen)
+1. [Danksagungen](#danksagungen)
 
-## Installation 
+### Installation 
 
-Copy `dbi.nro` and `dbi.config` to your SD card at `sdmc:/switch/DBI/` DBI can be then be launched in either applet mode (from Album) or application mode (title override), however it is primarily designed to be used in applet mode. 
+Kopiere `dbi.nro` und `dbi.config` auf deine SD-Karte unter `sdmc:/switch/DBI/`. DBI kann dann entweder im Applet-Modus (über Album) oder im Anwendungsmodus (Titelüberschreibung) gestartet werden, ist jedoch hauptsächlich für den Applet-Modus konzipiert.
 
-*If you have successfully launched DBI in applet mode you will see a blue background, launching in application mode will display a black background.*
+*Wenn du DBI erfolgreich im Applet-Modus gestartet hast, siehst du einen blauen Hintergrund. Beim Starten im Anwendungsmodus wird ein schwarzer Hintergrund angezeigt.*
 
-## Usage 
+## Verwendung 
 
-### Interface
+### Benutzeroberfläche
 ![2021041010520200](https://user-images.githubusercontent.com/18294541/114262830-d7643e00-99ea-11eb-8dbb-c8e0996577e5.jpg)
-* **Browse SD Card** —  installation of `NSP`/`NSZ`/`XCI`/`XCZ` files from the memory card.
-* **Browse USB0 Drive** — installation of `NSP`/`NSZ`/`XCI`/`XCZ` files from an external exFAT/FAT32 USB drive, such as a flash drive, hard drive, etc.
-* **Install title from DBIbackend** installation of NSP/NSZ/XCI/XCZ files from a PC via USB 2.0 or 3.0 cable using the included program dbibackend. *Hotkey* for this option: **(Y)** button.
-* **Install title from Gamecard** — this option appears when a game card is inserted into the Switch and allows for the installation of a game from the game card to the console's SD card or internal NAND memory.
-* **Home server** — starting with version v150, it is possible to install games over the network (HTTP) via WiFi without wires or a LAN-USB adapter. More details about this below.
-* **Browse installed applications** — view installed games, the total number of games installed, view time spent on a game and the number of times it has been launched, check for errors, transfer game data between internal memory, memory card, and back, selectively or continuously delete games and accompanying LayeredFS mods, view the presence of updates and DLC, manually remove DLC/updates/LayeredFS (LFS) mod, and the Reset Required version function to reset the system update check for a selected game. *Hotkey* for this option: **(L)** button.
-* **Cleanup orphaned files** — automatic cleaning of unnecessary deleted game files, if any.
-* **Browse tickets** — view and manually delete game system tickets.
-* **Browse saves** - view and delete game saves.
-* **Run MTP responder** — enables the internal MTP server to connect the Switch to a PC or Android device (phone/tablet/etc., tested with Pixel 3, Xiaomi Mi A1, Lenovo Tab 4 7" TB-7304X), where you can view and work with the memory card (1: SD Card) and internal console memory, view installed games (4: Installed games), backup game saves to a PC (7: Saves), and dump a game card (full/trimmed/certificate) to a PC/Android with an inserted game card (9: Gamecard). *Hotkey* for this option: **(X)** button
-* **Run FTP server** - enables the DBI FTP server for accessing SD files through port 5000 or installing files through port 6000.
-* **Exit** — exits the program. *Hotkey* for this option: **(+)** button.
+* **SD-Karte durchsuchen** — Installation von `NSP`/`NSZ`/`XCI`/`XCZ`-Dateien von der Speicherkarte.
+* **USB0-Laufwerk durchsuchen** — Installation von `NSP`/`NSZ`/`XCI`/`XCZ`-Dateien von einem externen exFAT/FAT32-USB-Laufwerk wie einem USB-Stick, einer Festplatte usw.
+* **Titel von DBIbackend installieren** — Installation von NSP/NSZ/XCI/XCZ-Dateien von einem PC über ein USB 2.0- oder 3.0-Kabel mit dem mitgelieferten Programm dbibackend. *Tastenkombination* für diese Option: **(Y)**-Taste.
+* **Titel von Gamecard installieren** — Diese Option erscheint, wenn eine Spielkarte in die Switch eingelegt ist, und ermöglicht die Installation eines Spiels von der Spielkarte auf die SD-Karte oder den internen NAND-Speicher der Konsole.
+* **Heimserver** — Ab Version v150 ist es möglich, Spiele über das Netzwerk (HTTP) über WLAN ohne Kabel oder einen LAN-USB-Adapter zu installieren. Weitere Details dazu findest du unten.
+* **Installierte Anwendungen durchsuchen** — Anzeigen installierter Spiele, Gesamtzahl der installierten Spiele, Anzeige der verbrachten Spielzeit und der Anzahl der Starts, Überprüfung auf Fehler, Übertragung von Spieldaten zwischen internem Speicher, Speicherkarte und zurück, selektives oder kontinuierliches Löschen von Spielen und dazugehörigen LayeredFS-Mods, Anzeige von Updates und DLCs, manuelles Entfernen von DLCs/Updates/LayeredFS-Mods und die Funktion "Reset Required Version", um die Systemupdate-Überprüfung für ein ausgewähltes Spiel zurückzusetzen. *Tastenkombination* für diese Option: **(L)**-Taste.
+* **Unnötige Dateien bereinigen** — Automatisches Reinigen von unnötigen gelöschten Spieldateien, falls vorhanden.
+* **Tickets durchsuchen** — Anzeigen und manuelles Löschen von Spielsystem-Tickets.
+* **Speicherstände durchsuchen** - Anzeigen und Löschen von Spielspeicherständen.
+* **MTP-Responder ausführen** — Aktiviert den internen MTP-Server, um die Switch mit einem PC oder Android-Gerät (Handy/Tablet usw., getestet mit Pixel 3, Xiaomi Mi A1, Lenovo Tab 4 7" TB-7304X) zu verbinden, wo du die Speicherkarte (1: SD-Karte) und den internen Konsolenspeicher anzeigen und bearbeiten, installierte Spiele (4: Installierte Spiele) anzeigen, Spielspeicherstände auf einem PC sichern (7: Speicherstände) und eine Spielkarte (vollständig/geschnitten/Zertifikat) auf einem PC/Android mit einer eingelegten Spielkarte (9: Spielkarte) dumpen kannst. *Tastenkombination* für diese Option: **(X)**-Taste.
+* **FTP-Server ausführen** - Aktiviert den DBI-FTP-Server zum Zugriff auf SD-Dateien über Port 5000 oder zum Installieren von Dateien über Port 6000.
+* **Beenden** — Beendet das Programm. *Tastenkombination* für diese Option: **(+)**-Taste.
 
-The bottom left corner of DBI displays the total amount of data currently on your SD card along with the full capacity. The bottom right corner gives you the same information for your NAND's usable space in HOS.
+Bottom left corner of DBI zeigt die Gesamtmenge der Daten auf deiner SD-Karte sowie die volle Kapazität an. In der unteren rechten Ecke findest du dieselben Informationen für den nutzbaren Speicherplatz deines NANDs in HOS.
 
-Bottom center (dbi: XXX) is the DBI version number - you should always use the most recent version.
+Unten in der Mitte (dbi: XXX) steht die DBI-Version - du solltest immer die neueste Version verwenden.
 
-### Buttons
+### Tasten
 
-* **(А)** - select or confirm
-* **(B)** - cancel, exits the program **from the main menu**
-* **(X)** - select file. On the main screen - hotkey for mounting MTP (menu item "[Run MTP responder](#run-mtp-responder)")
-* **(Y)** - invert selection, select all if nothing is selected. On the main screen - installation via USB using dbibackend (menu item "[Install title from DBIbackend](#install-title-from-dbibackend)")
-* **(ZL)** and **(ZR)** - scroll pages in menus, scroll through individual games when in detailed game menu
-* **(L)** - **on the main menu** the hotkey for the menu option "**Browse installed applications**"
-* **(R)** - change the displayed sort order of files/titles
-* **(L3)** - click left stick to launch games from the application list or detailed game menu
-* **(+)** on the right joycon - display context menus to allow you to perform operations such as deleting, resetting the required firmware version, mounting via MTP and more
-* **(-)** on the left joycon - turn the screen on/off when MTP mode is activated/when installing titles
+* **(А)** - auswählen oder bestätigen
+* **(B)** - abbrechen, verlässt das Programm **im Hauptmenü**
+* **(X)** - Datei auswählen. Auf dem Hauptbildschirm - Schnelltaste zum Einbinden von MTP (Menüpunkt "[Run MTP responder](#run-mtp-responder)")
+* **(Y)** - Auswahl umkehren, alles auswählen, wenn nichts ausgewählt ist. Auf dem Hauptbildschirm - Installation über USB mit dbibackend (Menüpunkt "[Install title from DBIbackend](#install-title-from-dbibackend)")
+* **(ZL)** und **(ZR)** - Blättern durch Menüseiten, Blättern durch einzelne Spiele im detaillierten Spielmenü
+* **(L)** - **im Hauptmenü** die Schnelltaste für die Menüoption "**Browse installed applications**"
+* **(R)** - Ändern der angezeigten Sortierreihenfolge von Dateien/Titeln
+* **(L3)** - Linken Stick klicken, um Spiele aus der Anwendungsliste oder dem detaillierten Spielmenü zu starten
+* **(+)** auf dem rechten Joy-Con - Kontextmenü anzeigen, um Operationen wie Löschen, Zurücksetzen der erforderlichen Firmware-Version, Einbinden über MTP und mehr auszuführen
+* **(-)** auf dem linken Joy-Con - Bildschirm ein-/ausschalten, wenn der MTP-Modus aktiviert/Spiele installiert werden
 
-### Browse SD Card / Browse USB0 Drive
+### SD-Karte durchsuchen / USB0-Laufwerk durchsuchen
 
-Select these options if you want to install games, updates and DLC from files present on your SD card or from an external USB drive.
-Press **(A)** to open the folder and **(B)** to return. After opening the folder containing your installation files use the **(X)** button to select single or multiple files for installation. The **(Y)** button inverts your selections and the color of the name of the selected files will change from white to light blue.
+Wähle diese Optionen aus, wenn du Spiele, Updates und DLCs von Dateien auf deiner SD-Karte oder von einem externen USB-Laufwerk installieren möchtest.
+Drücke **(A)**, um den Ordner zu öffnen, und **(B)**, um zurückzukehren. Nach dem Öffnen des Ordners mit deinen Installationsdateien verwende die **(X)**-Taste, um einzelne oder mehrere Dateien für die Installation auszuwählen. Die **(Y)**-Taste kehrt deine Auswahl um, und die Farbe des Namens der ausgewählten Dateien ändert sich von weiß zu hellblau.
 
-Press the **(A)** button to confirm. A window with installation options will appear:
+Drücke die **(A)**-Taste, um zu bestätigen. Ein Fenster mit Installationsoptionen wird angezeigt:
 
 ![2021041011441100](https://user-images.githubusercontent.com/18294541/114264183-18138580-99f2-11eb-8c7b-536b4b831195.jpg)
 
-* **Total transfer size** - the total amount of data (NSP/NSZ/XCI/XCZ files) selected for installation
-* **Total install size** - the amount of free space required to install the selected files
-* **Install target** - select installation location: **NAND** - internal memory of the Nintendo Switch console, **SD** - SD card, **AUTO** - by default this will install to your SD card but if you don't have enough space the installation will fall back to NAND (internal memory)
-* **Delete after install** - deletes installation files (NSP/NSZ/XCI/XCZ files) from the source after they have been successfully installed; for this to work, the "Read-only" attribute must be removed from files if present. By default files are not deleted. The option is visible only when installing from an SD card/external USB drive
-* **Turn off screen** - turns off the screen during installation to conserve battery, after installation successfully completes the screen will automatically turn back on. This option only works in handheld mode
-* Select **Start install** to begin the installation. After a successful installation "**Installation Complete. Press B to return**" will appear
+* **Gesamtübertragungsgröße** - die Gesamtmenge der ausgewählten Daten (NSP/NSZ/XCI/XCZ-Dateien) für die Installation
+* **Gesamtinstallationsgröße** - die Menge an freiem Speicherplatz, die zum Installieren der ausgewählten Dateien erforderlich ist
+* **Installationsziel** - wähle den Installationsort aus: **NAND** - interner Speicher der Nintendo Switch-Konsole, **SD** - SD-Karte, **AUTO** - standardmäßig wird dies auf deiner SD-Karte installiert, aber wenn nicht genügend Platz vorhanden ist, wird die Installation auf NAND (interner Speicher) zurückfallen
+* **Nach der Installation löschen** - löscht Installationsdateien (NSP/NSZ/XCI/XCZ-Dateien) von der Quelle, nachdem sie erfolgreich installiert wurden; dafür muss das Attribut "Schreibgeschützt" von Dateien entfernt werden, falls vorhanden. Standardmäßig werden Dateien nicht gelöscht. Diese Option ist nur sichtbar, wenn von einer SD-Karte/externen USB-Laufwerk installiert wird
+* **Bildschirm ausschalten** - schaltet den Bildschirm während der Installation zum Stromsparen aus. Nach erfolgreicher Installation wird der Bildschirm automatisch wieder eingeschaltet. Diese Option funktioniert nur im Handheld-Modus
+* Wähle **Start installieren**, um mit der Installation zu beginnen. Nach erfolgreicher Installation erscheint "**Installation abgeschlossen. Drücke B, um zurückzukehren**"
 
-*DBI will automatically and immediately remove old updates when installing a new update for a game, so you don't have to worry about the extra space they occupy.*
+*DBI entfernt automatisch und sofort alte Updates, wenn ein neues Update für ein Spiel installiert wird, sodass du dir keine Sorgen um den zusätzlichen Speicherplatz machen musst, den sie beanspruchen.*
 
-You can also navigate to your homebrew files and launch .nro files directly by highlighting them and pressing **(A)**.
+Du kannst auch zu deinen Homebrew-Dateien navigieren und .nro-Dateien direkt starten, indem du sie markierst und **(A)** drückst.
 
-### Install title from DBIbackend
+### Titel von DBIbackend installieren
 
-If you cannot use DBI's MTP responder this is another convenient method for installing titles over USB. Installing over USB allows you to transfer files directly from your PC for example, which avoids the inconvenience and of having to first move the file to your SD card and then install it.
+Wenn du den MTP-Responder von DBI nicht verwenden kannst, ist dies eine weitere bequeme Methode, um Titel über USB zu installieren. Die Installation über USB ermöglicht es dir, Dateien direkt von deinem PC zum Beispiel zu übertragen, was den Umstand vermeidet, zuerst die Datei auf deine SD-Karte verschieben zu müssen und sie dann zu installieren.
 
-*Main menu hotkey for this option*: **(Y)** button
+*Hauptmenü-Schnelltaste für diese Option*: **(Y)**-Taste
 
-In order to use this option you will first require dbibackend (`dbibackend.exe` for Windows, or the `dbibackend` script for all operating systems). Launch dbibackend, select the files to install, select Start server, connect a USB-C cable from your PC to your Switch and select **Install title from DBIbackend** in DBI.
+Um diese Option zu nutzen, benötigst du zunächst dbibackend (`dbibackend.exe` für Windows oder das `dbibackend`-Skript für alle Betriebssysteme). Starte dbibackend, wähle die zu installierenden Dateien aus, wähle "Server starten", verbinde ein USB-C-Kabel von deinem PC zu deiner Switch und wähle dann **Install title from DBIbackend** in DBI.
 
-For proper operation of dbibackend on Windows, you need to install the "**libusbK (v3.1.0.0)**" drivers. They can be installed through the [Zadig program](https://zadig.akeo.ie/) by entering DBI into the "**Install title from DBIbackend**" mode and selecting the device that appears in the program.
+Für den ordnungsgemäßen Betrieb von dbibackend unter Windows müssen die Treiber "**libusbK (v3.1.0.0)**" installiert sein. Sie können über das [Zadig-Programm](https://zadig.akeo.ie/) installiert werden, indem du DBI in den "**Install title from DBIbackend**"-Modus versetzt und das Gerät auswählst, das im Programm erscheint.
 
-From here you can select and install your files on the Switch in the same fashion as using Browse SD Card/Browse USB0 Drive.
+Von hier aus kannst du deine Dateien auf der Switch genauso auswählen und installieren wie beim Durchsuchen der SD-Karte/des USB0-Laufwerks.
 
-To quickly send files or folders with games for installation, right-click on them, select `Send from dbibackend` and the installation files will be immediately placed in dbibackend's queue. To configure this in Windows, press `Win + R`, enter `shell: sendto` and create a shortcut for `dbibackend.exe` in the folder.
+Um Dateien oder Ordner mit Spielen schnell zur Installation zu senden, klicke mit der rechten Maustaste darauf, wähle `Send from dbibackend` und die Installationsdateien werden sofort in die Warteschlange von dbibackend verschoben. Um dies in Windows zu konfigurieren, drücke `Win + R`, gib `shell: sendto` ein und erstelle eine Verknüpfung für `dbibackend.exe` im Ordner.
 
-There are alternative clients for working with DBIbackend, for example [headless implementation](https://github.com/cyb3rwarden/dbibackend/blob/0885ef67edf28cbca30fb2c193ad7ab9a62786f7/dbibackend/dbibackend.py), [NSW-DBI 2.0.0 on nodegui](https://4pda.to/forum/index.php?showtopic=939714&st=6080#entry100701109) (requires installation of libusb driver for Linux or WinUSB (libusb) for Windows via Zadig).
+Es gibt alternative Clients für die Arbeit mit DBIbackend, zum Beispiel die [kopflose Implementierung](https://github.com/cyb3rwarden/dbibackend/blob/0885ef67edf28cbca30fb2c193ad7ab9a62786f7/dbibackend/dbibackend.py), [NSW-DBI 2.0.0 auf NodeGUI](https://4pda.to/forum/index.php?showtopic=939714&st=6080#entry100701109) (erfordert die Installation des libusb-Treibers für Linux oder WinUSB (libusb) für Windows über Zadig).
 
-You can pass commands to the script by running it from the command line and then specifying the path to the game or games you need to install. For example:
+Du kannst Befehle an das Skript übergeben, indem du es von der Befehlszeile ausführst und dann den Pfad zum Spiel oder den Spielen angibst, die du installieren möchtest. Zum Beispiel:
 
 ```
 python ~/dbi/dbibackend ~/Switch/File1.nsp ~/Switch/File2.nsp ~/Switch/File3.nsp
@@ -149,40 +149,41 @@ python ~/dbi/dbibackend ~/Switch/File1.nsp ~/Switch/File2.nsp ~/Switch/File3.nsp
 dbibackend.exe "e:\Switch\Games\File1.nsp" "e:\Switch\Games\File2.nsp" "e:\Switch\Games\File3.nsp"
 ```
 
-#### Dependencies that may be required to run on MacOS or Linux
+#### Abhängigkeiten, die möglicherweise erforderlich sind, um unter MacOS oder Linux auszuführen
 
 ```bash
 brew install python-tk
 pip3 install pyusb
 ```
 
-#### Install instructions for Ubuntu 22.04.3
+#### Installationsanweisungen für Ubuntu 22.04.3
 
-This will install DBI dependencies and create a udev rule to allow a non-root user to access a Switch connected via USB.
+Dies installiert die DBI-Abhängigkeiten und erstellt eine udev-Regel, um einem nicht-root-Benutzer den Zugriff auf eine über USB verbundene Switch zu ermöglichen.
 
-```pip3 install pyusb
+```bash
+pip3 install pyusb
 sudo apt install python-tk
 echo 'SUBSYSTEM=="usb", ATTRS{idVendor}=="057e", ATTRS{idProduct}=="3000", MODE="0666"' | sudo tee /etc/udev/rules.d/nintendo-switch.rules
 sudo udevadm control --reload-rules
 ```
 
-### Home server
+### Home-Server
 
-The **"Home server"** option will appear if the **Network install sources** section has been configured in **[dbi.config](#dbiconfig)**. You can specify the name of the option as required in the configuration file.
+Die Option **"Home-Server"** wird angezeigt, wenn der Abschnitt **Network install sources** in der Datei **[dbi.config](#dbiconfig)** konfiguriert wurde. Du kannst den Namen der Option wie erforderlich in der Konfigurationsdatei angeben.
 
-To install games over your network, edit the dbi.config file located in the `sdmc:/switch/DBI/` folder as required. For example:
+Um Spiele über dein Netzwerk zu installieren, bearbeite die dbi.config-Datei, die sich im Ordner `sdmc:/switch/DBI/` befindet, wie benötigt. Zum Beispiel:
 
 ```
-; Network install sources
+; Netzwerkinstallationsquellen
 [Network sources]
-; <display name>=<type>|<URL>
+; <Anzeigename>=<Typ>|<URL>
 Home server=ApacheHTTP|http://192.168.1.47/Nintendo/Switch/
 ```
 
-Install any HTTP server with DirectoryListing enabled on your PC: Apache, Mongoose, Python SimpleHTTP, sheret, rclone, etc.
+Installiere einen beliebigen HTTP-Server mit aktivierter Directory-Listing-Funktion auf deinem PC: Apache, Mongoose, Python SimpleHTTP, sheret, rclone usw.
 
-Example for nginx on Windows:
-Edit the file `/nginx/conf/nginx.conf`, registering the address of your Switch in `location`, instead of the `127.0.0.1` specified in the example (or your entire subnet like 192.168.1.1/24 or 192.168.0.0/16); it can be found on Switch in **System Preferences** > **Internet**:
+Beispiel für nginx unter Windows:
+Bearbeite die Datei `/nginx/conf/nginx.conf`, indem du die Adresse deiner Switch in `location` registrierst, anstelle der im Beispiel angegebenen `127.0.0.1` (oder dein gesamtes Subnetz wie 192.168.1.1/24 oder 192.168.0.0/16); diese finden Sie auf der Switch unter **Systemeinstellungen** > **Internet**:
 
 ```
 location / {
@@ -196,719 +197,713 @@ autoindex on;
 }
 ```
 
-Save the config, run `nginx.exe`, allow the program to access the network, then copy the desired game to the local `/nginx/html/Nintendo/Switch/` folder on your PC, and on the Switch select “Home server”.
-You will now be presented with the usual interface for installing files and you can start installing files over the network. You can stop the web server via nginx -s stop.
+Speichere die Konfiguration, starte `nginx.exe`, erlaube dem Programm den Zugriff auf das Netzwerk, kopiere dann das gewünschte Spiel in den lokalen `/nginx/html/Nintendo/Switch/`-Ordner auf deinem PC, und auf der Switch wähle "Home-Server".
+Du erhältst nun die gewohnte Benutzeroberfläche zur Installation von Dateien, und du kannst mit der Installation von Dateien über das Netzwerk beginnen. Du kannst den Webserver über `nginx -s stop` stoppen.
 
-For the server address in `dbi.config`, you can also use a domain name, for example, your remote VPS - suggested to use with HTTP Basic authentication e.g.: `http://user:password@host:port/Nintendo/Switch/`
+Für die Serveradresse in `dbi.config` kannst du auch einen Domainnamen verwenden, zum Beispiel deinen Remote-VPS - es wird empfohlen, dies mit HTTP-Basisauthentifizierung zu verwenden, z.B.: `http://user:password@host:port/Nintendo/Switch/`
 
-For example:
+Zum Beispiel:
 ```
-ApacheHTTP|Network repo|http://127.0.0.1/Nintendo/Switch/
-ApacheHTTP|WWW VPS repo|http://www.myveryownswitchvpsdomain.su/Nintendo/Switch/
+ApacheHTTP|Netzwerk-Repo|http://127.0.0.1/Nintendo/Switch/
+ApacheHTTP|WWW VPS-Repo|http://www.meineeigenevpsdomain.su/Nintendo/Switch/
 ```
 
-Generate the htpasswd file, put it in /nginx/conf/, then adjust the nginx.conf file as follows:
+Generiere die htpasswd-Datei, lege sie in /nginx/conf/ ab, und passe dann die nginx.conf-Datei wie folgt an:
 
 ```
         location /Nintendo/Switch/ {
 			   satisfy all;
 			   allow 127.0.0.1;
 			   deny all;
-			   auth_basic "Password Protected Area";
+			   auth_basic "Passwortgeschützter Bereich";
 			   auth_basic_user_file htpasswd; 
                autoindex on;
         }
 ```
 
-Login "switch", password "pwd":
+Login "switch", Passwort "pwd":
 
-htpasswd-file:
+htpasswd-Datei:
 ```
 switch:{SHA}N/omUzCtg+qoee+x4ttjgIls9jk=
 ```
 
-### Browse installed applications
+### Installierte Anwendungen durchsuchen
 
-In **Browse installed applications** you can see a list of installed programs, updates and DLC with their occupied space, version (display version and hex version), their titleID, the total game time and the number of launches and the presence of installed LayeredFS mods for the game (for Atmosphére). 
+In **Installierte Anwendungen durchsuchen** siehst du eine Liste der installierten Programme, Updates und DLCs mit ihrem belegten Speicherplatz, der Version (Anzeigeversion und Hex-Version), ihrer Titel-ID, der Gesamtspielzeit und der Anzahl der Starts sowie der vorhandenen LayeredFS-Mods für das Spiel (für Atmosphére).
 
-*Main menu hotkey for this option*: **(L)** button
+*Hauptmenü-Hotkey für diese Option*: **(L)**-Taste
 
-At the top center, the total number of installed games and the sorting type is displayed.
+Oben in der Mitte wird die Gesamtzahl der installierten Spiele und der Sortierungstyp angezeigt.
 
 ![2021062719353200](https://user-images.githubusercontent.com/18294541/123554546-32efcd80-d789-11eb-8d3f-3124448624e0.jpg)
 
-On the left hand side in square brackets, information on the game installation location, installed file type and the presence of LayeredFS mods or cheats is denoted:
+Auf der linken Seite in eckigen Klammern wird die Information zum Installationsort des Spiels, zum installierten Dateityp und zum Vorhandensein von LayeredFS-Mods oder Cheats angegeben:
 
-* **N/S/M/G** - NAND/SD/Mixed/Gamecart - Location of installed files, Mixed denotes that installed files were detected on both NAND and SD card
-* **b** - BASE - the base game
-* **u** - Update - update installed
-* **d** - DLC - DLC installed
-* **l** - LayeredFS mod - LayeredFS mods or cheats for the game were detected at `sdmc:/atmosphere/contents/%titleID%/`
+* **N/S/M/G** - NAND/SD/Gemischt/Spielmodul - Ort der installierten Dateien, Gemischt zeigt an, dass installierte Dateien sowohl im NAND als auch auf der SD-Karte erkannt wurden
+* **b** - BASE - das Basis-Spiel
+* **u** - Update - installiertes Update
+* **d** - DLC - installiertes DLC
+* **l** - LayeredFS-Mod - LayeredFS-Mods oder Cheats für das Spiel wurden unter `sdmc:/atmosphere/contents/%Titel-ID%/` erkannt
 
-You can quick launch a game directly from the list by highlighting it and pressing **(L3)**.
+Du kannst ein Spiel direkt aus der Liste starten, indem du es markierst und **(L3)** drückst.
 
-**Please note!** If the game is **highlighted in red** only an update and/or DLC is installed, the game itself is NOT installed.
+**Bitte beachten!** Wenn das Spiel **rot markiert ist**, ist nur ein Update und/oder DLC installiert, das eigentliche Spiel ist NICHT installiert.
 
-#### Title context menu
+#### Titel-Kontextmenü
 
 ![2021062719354100](https://user-images.githubusercontent.com/18294541/123554557-3b480880-d789-11eb-9235-d547f2c588bd.jpg)
 
-Displayed by clicking on **(+)** on the selected title(s).
+Angezeigt durch Klicken auf **(+)** auf dem ausgewählten Titel.
 
-* **Delete title** - delete selected titles
-* **Move title to SD/NAND** - move the selected titles to SD card or NAND, depending on where the title is currently located. If content is installed to both locations then both options will be displayed
-* **Reset required version** - resets the system version check required to run the title (debug must be enabled in Atmosphere)
-* **Check integrity** - checks the data integrity of the selected titles
-* **Expose contents via MTP** - mount the content of the selected titles via MTP 
-* **Dump to SD** - dump all available content (game, DLC, update) to a SD card using the path specified in the config (default is `switch/DBI/dumps`)
-* **Content info** - display additional information about the content (SDK version, required key generation, ID, patch information, and more)
+* **Titel löschen** - ausgewählte Titel löschen
+* **Titel auf SD/NAND verschieben** - die ausgewählten Titel auf die SD-Karte oder den NAND verschieben, abhängig davon, wo sich der Titel derzeit befindet. Wenn Inhalte an beiden Orten installiert sind, werden beide Optionen angezeigt
+* **Erforderliche Version zurücksetzen** - setzt die Versionsprüfung des Systems zurück, die erforderlich ist, um den Titel auszuführen (Debug muss in Atmosphäre aktiviert sein)
+* **Integrität überprüfen** - überprüft die Datenintegrität der ausgewählten Titel
+* **Inhalte über MTP freigeben** - die Inhalte der ausgewählten Titel über MTP bereitstellen
+* **Auf SD sichern** - alle verfügbaren Inhalte (Spiel, DLC, Update) auf eine SD-Karte dumpen, wobei der im Config-File angegebene Pfad verwendet wird (Standard ist `switch/DBI/dumps`)
+* **Inhaltsinfo** - zusätzliche Informationen zum Inhalt anzeigen (SDK-Version, erforderliche Schlüsselerstellung, ID, Patch-Informationen und mehr)
 
-If you press the **(A)** button on the title, the **detailed game menu** will open.
+Wenn du die **(A)**-Taste auf dem Titel drückst, wird das **detaillierte Spielmenü** geöffnet.
 
-### Detailed game menu
+### Detailliertes Spielmenü
 
-The **detailed game menu** opens when you press the **(A)** button on a title while in the menu for browsing installed games (**Browse installed applications**)
+Das **detaillierte Spielmenü** wird geöffnet, wenn du die **(A)**-Taste auf einem Titel drückst, während du dich im Menü zum Durchsuchen installierter Spiele befindest (**Installierte Anwendungen durchsuchen**)
 
 ![2021062719353600](https://user-images.githubusercontent.com/18294541/123554561-400cbc80-d789-11eb-8d81-e3403f33b365.jpg)
 
-The game's icon, TitleID, name, author, version, supported languages, and the presence of an LFS mod are displayed in the detailed game menu, which can be accessed by pressing the **(A)** button on the game's tile while in the browse installed applications menu.
+Im detaillierten Spielmenü werden das Symbol des Spiels, die Titel-ID, der Name, der Autor, die Version, unterstützte Sprachen und die Anwesenheit eines LFS-Mods angezeigt. Dieses Menü kann aufgerufen werden, indem du die **(A)**-Taste auf dem Kachel des Spiels drückst, während du dich im Menü zum Durchsuchen installierter Anwendungen befindest.
 
-Additionally, the menu displays the total playtime, total launches, total occupied space, space in NAND and on SD, total saves size, and the game's forced language.
+Darüber hinaus zeigt das Menü die Gesamtspielzeit, die Gesamtanzahl der Starts, den gesamten belegten Speicherplatz, den Speicherplatz im NAND und auf der SD-Karte, die Gesamtgröße der Speicherstände und die erzwungene Sprache des Spiels an.
 
-Below that, there are three tabs that can be switched between using the **(L)** and **(R)** buttons:
+Darunter befinden sich drei Registerkarten, zwischen denen du mit den **(L)**- und **(R)**-Tasten wechseln kannst:
 
-* **Content records**
+* **Inhaltsprotokolle**
 * **Tickets**
-* **Saves**
+* **Speicherstände**
 
-#### Content records
+#### Inhaltsprotokolle
 
-The information is displayed in the following format:
+Die Informationen werden im folgenden Format angezeigt:
 
-[Location] Type | version [version number] | Size
+[Ort] Typ | Version [Versionsnummer] | Größe
 
-**Location** - **NAND** or **SD**, depending on where the content is installed
-**Type** - **Application** for the base game, **Update** for updates, **Addon** for DLC, and the number of the DLC will be indicated next to it
-**version [version number]** - the content version in dec and [hex] (for example, 786432 is 0.12.0.0)
-**Size** - occupied space
+**Ort** - **NAND** oder **SD**, abhängig davon, wo der Inhalt installiert ist
+**Typ** - **Anwendung** für das Grundspiel, **Update** für Updates, **Addon** für DLC, und die Nummer des DLC wird daneben angezeigt
+**Version [Versionsnummer]** - die Inhaltsversion in Dezimal- und [Hexadezimal] (zum Beispiel ist 786432 0.12.0.0)
+**Größe** - belegter Speicherplatz
 
-By pressing the **(A)** button on the content, you can view its contents. The content can be copied by selecting the corresponding item in the context menu (which opens by pressing the **(+)** button). The content opens in "read-only" mode.
+Durch Drücken der **(A)**-Taste auf dem Inhalt kannst du dessen Inhalt anzeigen. Der Inhalt kann kopiert werden, indem du das entsprechende Element im Kontextmenü auswählst (das sich durch Drücken der **(+)**-Taste öffnet). Der Inhalt wird im "Nur-Lesen"-Modus geöffnet.
 
-When you press the (+) button on the selected content, you can access the context menu, which includes:
+Wenn du die (+)-Taste auf dem ausgewählten Inhalt drückst, kannst du auf das Kontextmenü zugreifen, das Folgendes enthält:
 
-* **Delete record** - delete the selected record
-* **Move records to SD/NAND** - move the selected record to NAND or the memory card, depending on where it is currently located. If parts of the title are located in both places, both options will be displayed.
-* **Reset required version** - reset the required system version check for launching the title (debug must be enabled in Atmosphere). This will not help if the game was built on a new SDK version.
-* **Force language** - allows you to forcibly launch the game with a selected language. By default, the game runs with the same language selected in the system, if it is not available in the game, depending on the console region. The selected language will be displayed next to the game icon in the **Forced Language** field.
-* **Check integrity** - checks the integrity of the selected title data.
-* **Expose contents via MTP** - mounts the content of the selected titles via MTP.
-* **Dump to SD** - dumps all available content (game, DLC, update) to the SD card according to the path specified in the config (default: switch/DBI/dumps).
-* **Content info** - displays additional information about the content, including the SDK version, required key generation, ID, patch information, and much more.
+* **Protokolle löschen** - löscht den ausgewählten Eintrag
+* **Einträge auf SD/NAND verschieben** - verschiebt den ausgewählten Eintrag in den NAND oder die Speicherkarte, abhängig davon, wo er sich derzeit befindet. Wenn Teile des Titels an beiden Orten vorhanden sind, werden beide Optionen angezeigt.
+* **Erforderliche Version zurücksetzen** - setzt die erforderliche Systemversionsüberprüfung für das Starten des Titels zurück (Debug muss in Atmosphère aktiviert sein). Dies hilft nicht, wenn das Spiel auf einer neuen SDK-Version erstellt wurde.
+* **Sprache erzwingen** - ermöglicht das erzwungene Starten des Spiels mit einer ausgewählten Sprache. Standardmäßig wird das Spiel mit derselben im System ausgewählten Sprache ausgeführt, falls diese im Spiel nicht verfügbar ist, abhängig von der Konsolenregion. Die ausgewählte Sprache wird neben dem Spielsymbol im Feld **Erzwungene Sprache** angezeigt.
+* **Integrität überprüfen** - überprüft die Integrität der ausgewählten Titeldaten.
+* **Inhalte über MTP freigeben** - bindet den Inhalt der ausgewählten Titel über MTP ein.
+* **Auf SD dumpen** - dumpen Sie alle verfügbaren Inhalte (Spiel, DLC, Update) auf die SD-Karte gemäß dem im Konfigurationsbereich festgelegten Pfad (Standard: switch/DBI/dumps).
+* **Info zum Inhalt** - zeigt zusätzliche Informationen zum Inhalt an, einschließlich der SDK-Version, erforderlicher Schlüsselgeneration, ID, Patch-Informationen und vielem mehr.
 
 #### Tickets
 
-A **ticket (or encrypted title key)** is a unique encrypted information about the rights to launch game content that is installed in the system during the installation of each game (ending in **000** in the titleID)/update (ending in **800** in the titleID)/DLC.
+Ein **Ticket (oder verschlüsselter Titelschlüssel)** ist eine einzigartige verschlüsselte Information über die Rechte zur Ausführung von Spielinhalten, die während der Installation jedes Spiels (endend mit **000** in der Titel-ID)/Updates (endend mit **800** in der Titel-ID)/DLC im System installiert wird.
 
-Installed tickets for content are displayed, including:
+Installierte Tickets für Inhalte werden angezeigt, einschließlich:
 
-* **Personalized ticket** - a ticket given when installing a game from the eShop, which is personalized and unique for each account.
-* **Common ticket** - a general ticket that exists for updates and is also used as a workaround in pirated games.
+- **Personalisiertes Ticket** - ein Ticket, das bei der Installation eines Spiels aus dem eShop vergeben wird und das für jeden Account personalisiert und einzigartig ist.
+- **Allgemeines Ticket** - ein allgemeines Ticket, das für Updates vorhanden ist und auch als Workaround bei Raubkopien verwendet wird.
 
-The game databases on Nintendo servers are encrypted with the same key, but this key is encrypted with its own unique key for each game purchaser (generated on the console). Therefore, the key for decrypting the game can only be obtained from the personalized ticket on the console for which it was created. Thus, while personalized tickets differ for each purchaser, they all contain the same decryption key. Common tickets do not have encryption, only a signature.
+Die Spieldatenbanken auf den Nintendo-Servern sind mit demselben Schlüssel verschlüsselt, aber dieser Schlüssel ist mit seinem eigenen eindeutigen Schlüssel für jeden Spiellizenzinhaber (auf der Konsole generiert) verschlüsselt. Daher kann der Schlüssel zur Entschlüsselung des Spiels nur aus dem personalisierten Ticket auf der Konsole, für die es erstellt wurde, erhalten werden. Somit enthalten zwar personalisierte Tickets unterschiedliche Tickets für jeden Käufer, aber alle enthalten denselben Entschlüsselungsschlüssel. Allgemeine Tickets haben keine Verschlüsselung, sondern nur eine Signatur.
 
-By clicking the **(+)** button on the selected content, you can access a context menu where you can delete selected tickets. 
+Durch Klicken auf die **(+)**-Taste auf dem ausgewählten Inhalt kannst du auf ein Kontextmenü zugreifen, in dem du ausgewählte Tickets löschen kannst.
 
-In some cases, if a specific error occurs and you are sure of what you are doing, you can delete it for a specific game and its updates/DLC. However, it is generally better to leave the tickets alone to avoid errors when launching games.
+In einigen Fällen, wenn ein bestimmter Fehler auftritt und du sicher bist, was du tust, kannst du es für ein bestimmtes Spiel und dessen Updates/DLC löschen. Es ist jedoch im Allgemeinen besser, die Tickets in Ruhe zu lassen, um Fehler beim Starten von Spielen zu vermeiden.
 
 #### Saves
 
-Viewing and deleting saves. If there is no save, it can be created through the context menu (button (+)) for the selected account. If there is a save:
+Hier kannst du Spielstände anzeigen und löschen. Wenn kein Spielstand vorhanden ist, kann er über das Kontextmenü (Taste (+)) für das ausgewählte Konto erstellt werden. Wenn ein Spielstand vorhanden ist:
 
-* **Backup** - make a backup of the save. By default, it will be located in the `switch/DBI/saves` folder.
-* **Restore** - restore the backup of the save.
-* **Save info...** - detailed information about the save, such as type, size, account name, etc.
-* **Increase save size** - increases the space allocated for the save by a specified value.
-* **Delete** - delete the save.
+- **Backup** - Erstelle ein Backup des Spielstands. Standardmäßig wird es im Ordner `switch/DBI/saves` gespeichert.
+- **Wiederherstellen** - Stelle das Backup des Spielstands wieder her.
+- **Speicherinfo...** - Detaillierte Informationen über den Spielstand wie Typ, Größe, Kontoname usw.
+- **Speichergröße erhöhen** - Erhöhe den für den Spielstand zugewiesenen Speicherplatz um einen bestimmten Wert.
+- **Löschen** - Lösche den Spielstand.
 
-### Browse tickets
-View and delete game tickets. **Ticket (or encrypted title key)** is a special encrypted unique information about the rights to launch the content of the game, which is installed in the system during the installation of each game (**000** at the end of the titleID) / update (**800** at the end of titleID) / of each DLC.
+### Tickets durchsuchen
 
-* **+** means there is an installed game
-* **[c]** (**Personalized ticket**) - a ticket that is given when installing a game from the eShop, it is personalized, meaning it is encrypted with a unique key from your console.
-* **[p]** (**Common ticket**) - a common type of ticket that is used for updates and also used as a workaround for pirated games.
+Hier kannst du Spiel-Tickets anzeigen und löschen. Ein **Ticket (oder verschlüsselter Titelschlüssel)** ist eine spezielle verschlüsselte eindeutige Information über die Rechte zur Ausführung des Inhalts des Spiels, die während der Installation jedes Spiels (**000** am Ende der Titel-ID) / Updates (**800** am Ende der Titel-ID) / jedes DLC im System installiert wird.
 
-Game databases on Nintendo servers are encrypted with the same key, but this key is encrypted with a unique key for each purchased game (this key is generated on the console itself), so it is only possible to obtain the decryption key for a game from a Personalized ticket on the console it was created for.
-This means that all Personalized tickets purchased are different, but they contain the same decryption key for the game.
-Common tickets, on the other hand, do not have encryption, only a signature.
+- **+** bedeutet, dass ein Spiel installiert ist.
+- **[c]** (**Personalisiertes Ticket**) - ein Ticket, das beim Installieren eines Spiels aus dem eShop vergeben wird. Es ist personalisiert, was bedeutet, dass es mit einem einzigartigen Schlüssel von deiner Konsole verschlüsselt ist.
+- **[p]** (**Allgemeines Ticket**) - eine gängige Art von Ticket, die für Updates verwendet wird und auch als Workaround für Raubkopien verwendet wird.
 
-Sometimes if a specific error occurs and you know exactly what you are doing, it can be removed from a specific game and its update/DLC.
+Die Spieldatenbanken auf Nintendo-Servern sind mit demselben Schlüssel verschlüsselt, aber dieser Schlüssel ist mit einem einzigartigen Schlüssel für jedes gekaufte Spiel verschlüsselt (dieser Schlüssel wird auf der Konsole selbst generiert). Daher ist es nur möglich, den Entschlüsselungsschlüssel für ein Spiel von einem personalisierten Ticket auf der Konsole zu erhalten, für die es erstellt wurde.
+Dies bedeutet, dass alle gekauften personalisierten Tickets unterschiedlich sind, aber sie enthalten denselben Entschlüsselungsschlüssel für das Spiel.
+Allgemeine Tickets hingegen haben keine Verschlüsselung, nur eine Signatur.
 
-In most cases it is better not to touch anything here, in order to avoid errors when starting games.
+Manchmal kann es, wenn ein bestimmter Fehler auftritt und du genau weißt, was du tust, von einem bestimmten Spiel und seinem Update/DLC entfernt werden.
 
-#### Tickets context menu
+In den meisten Fällen ist es jedoch besser, hier nichts zu berühren, um Fehler beim Starten von Spielen zu vermeiden.
 
-Displayed by clicking on **(+)** on selected tickets
+#### Kontextmenü für Tickets
 
-The number of selected tickets is displayed at the top of the context window.
+Das Kontextmenü wird angezeigt, wenn du auf **(+)** auf ausgewählten Tickets klickst.
 
-* **Delete tickets** - delete selected tickets
+Oben im Kontextfenster wird die Anzahl der ausgewählten Tickets angezeigt.
 
-* **Select same game** - highlight all tickets related to the selected game
+- **Tickets löschen** - Lösche ausgewählte Tickets.
+- **Gleiches Spiel auswählen** - Markiere alle Tickets, die mit dem ausgewählten Spiel zusammenhängen.
 
-### Tools
+### Werkzeuge
 
-* **Cleanup orphaned files** - cleaning up lost files. Automatically cleans up unnecessary game files, files from interrupted/failed game installations, officially downloaded firmware updates and all unused game tickets if found.
-* **Delete parental controls** - completely removes parental controls. No reboot required.
-* **Delete user...** - completely removes the selected user from the system (the removed user's saves remain in the system).
-* **Run random game** - launches a random game from those installed.
-* **NTP time sync** - Synchronizes the console's time with a remote time synchronization server. Internet connection and correctly set timezone in the console settings are required for operation.
-* **Check for title updates** - checks for updates and new DLC for installed games. The database for checking is set in the settings.
+- **Verwaiste Dateien bereinigen** - Bereinigt verlorene Dateien. Reinigt automatisch unnötige Spieldateien, Dateien von unterbrochenen/fehlgeschlagenen Spielinstallationen, offiziell heruntergeladene Firmware-Updates und alle unbenutzten Spieltickets, sofern vorhanden.
+- **Elterliche Kontrollen löschen** - Entfernt vollständig elterliche Kontrollen. Kein Neustart erforderlich.
+- **Benutzer löschen...** - Entfernt den ausgewählten Benutzer vollständig aus dem System (die entfernten Benutzerspeicherstände bleiben im System erhalten).
+- **Zufälliges Spiel starten** - Startet ein zufälliges Spiel aus den installierten Spielen.
+- **NTP-Zeitsynchronisierung** - Synchronisiert die Zeit der Konsole mit einem entfernten Zeit-Synchronisationsserver. Eine Internetverbindung und korrekt eingestellte Zeitzone in den Konsoleneinstellungen sind für den Betrieb erforderlich.
+- **Nach Titelupdates suchen** - Überprüft auf Updates und neue DLCs für installierte Spiele. Die Datenbank für die Überprüfung ist in den Einstellungen festgelegt.
 
-### Browse saves
+### Speicherstände durchsuchen
 
-View, backup and delete saves.
+Anzeigen, sichern und Löschen von Speicherständen.
 
-In general, saves are displayed in the following format:
+Im Allgemeinen werden Speicherstände im folgenden Format angezeigt:
 
-`[Account] Game-Name Backup-date Size`
+`[Konto] Spielname Sicherungsdatum Größe`
 
-* **Account** - shows the name of the account for which the save was created, if the save type is Account, if the save type is other, it shows its type
-* **Game-Name** - shows the name of the game for which the save was created
-* **Backup-date** - shows the date when the backup was created, only displayed in the Backup tab
-* **Size** - the size of the save or backup
+- **Konto** - zeigt den Namen des Kontos an, für das der Speicherstand erstellt wurde. Wenn der Speicherstandtyp "Konto" ist, zeigt er den Namen des Kontos an, andernfalls zeigt er den Typ an.
+- **Spielname** - zeigt den Namen des Spiels an, für das der Speicherstand erstellt wurde.
+- **Sicherungsdatum** - zeigt das Datum an, an dem die Sicherung erstellt wurde. Nur im Backup-Tab angezeigt.
+- **Größe** - die Größe des Speicherstands oder der Sicherung.
 
-Below, there are three tabs that can be switched using the **(L)** and **(R)** buttons:
+Darunter befinden sich drei Registerkarten, die mit den **(L)** und **(R)** Tasten gewechselt werden können:
 
-* **Installed** - shows saves for all installed games
-* **Uninstalled** - shows saves for all uninstalled games
-* **Backups** - shows created backups
+- **Installiert** - zeigt Speicherstände für alle installierten Spiele an.
+- **Deinstalliert** - zeigt Speicherstände für alle deinstallierten Spiele an.
+- **Sicherungen** - zeigt erstellte Sicherungen an.
 
-#### Context menu Installed and Uninstalled
+#### Kontextmenü "Installiert" und "Deinstalliert"
 
-Displayed when **(+)** is pressed on selected saves
+Wird angezeigt, wenn **(+)** auf ausgewählte Speicherstände gedrückt wird.
 
-* **Backup** - creates backups of the selected saves
-* **Open** - opens the save
-* **Save info...** - shows information about the save (Id, type, size, creation time, etc.)
-* **Delete** - deletes the selected saves
-* **Select same app** - selects all saves related to the selected game
-* **Browse app(s)** - goes to the [content record card](#content-records) of the selected games. You can switch between cards using the **(ZL)**/**(ZR)** buttons. Only available in the **Installed** tab.
+- **Sichern** - erstellt Sicherungen der ausgewählten Speicherstände.
+- **Öffnen** - öffnet den Speicherstand.
+- **Speicherinfo...** - zeigt Informationen zum Speicherstand an (ID, Typ, Größe, Erstellungszeit usw.).
+- **Löschen** - löscht die ausgewählten Speicherstände.
+- **Gleiches Spiel auswählen** - wählt alle Speicherstände aus, die mit dem ausgewählten Spiel zusammenhängen.
+- **Apps durchsuchen** - geht zur [Datensatzkarte](#content-records) des ausgewählten Spiels. Sie können zwischen den Karten mit den **(ZL)**/**(ZR)**-Tasten wechseln. Nur im Tab "Installiert" verfügbar.
 
-#### Backups context menu
+#### Kontextmenü "Sicherungen"
 
-Displayed by clicking on **(+)** on selected saves
+Wird angezeigt, wenn auf **(+)** für ausgewählte Sicherungen geklickt wird.
 
-* **Validate saves** - check the integrity of saves
-* **Restore** - restore selected backup saves
-* **Open** - open the selected save
-* **Delete** - deletes the selected saves
-* **Browse app(s)** - goes to the [content record card](#content-records) of the selected games. You can switch between cards using the **(ZL)**/**(ZR)** buttons. Only available in the **Installed** tab.
-* **Select same user** - select all saves belonging to a specific user.
+- **Sicherungen überprüfen** - überprüft die Integrität der Sicherungen.
+- **Wiederherstellen** - stellt ausgewählte Sicherungen wieder her.
+- **Öffnen** - öffnet den ausgewählten Speicherstand.
+- **Löschen** - löscht die ausgewählten Sicherungen.
+- **Apps durchsuchen** - geht zur [Datensatzkarte](#content-records) des ausgewählten Spiels. Sie können zwischen den Karten mit den **(ZL)**/**(ZR)**-Tasten wechseln. Nur im Tab "Installiert" verfügbar.
+- **Gleiches Konto auswählen** - wählt alle Speicherstände aus, die zu einem bestimmten Benutzer gehören.
 
-If multiple backups are selected for one game and user in the list, only the most recent backup will be restored.
+Wenn mehrere Sicherungen für ein Spiel und einen Benutzer in der Liste ausgewählt sind, wird nur die neueste Sicherung wiederhergestellt.
 
-### Run MTP responder 
+**Run MTP responder** aktiviert den integrierten MTP-Server in DBI, um Daten mit einem PC oder einem Android-Gerät über USB-C OTG (Telefon/Tablet/andere Geräte) auszutauschen. *Hotkey, um diese Option aus dem Hauptmenü aufzurufen*: die **(X)**-Taste (auch zum Beenden von MTP verwendet). Nach dem Anschließen des USB-Kabels an den PC und dem Starten des MTP-Servers in DBI erscheint folgendes Fenster auf dem PC:
 
-**Run MTP responder** activates the built-in MTP server in DBI for exchanging data with a PC or an Android device via USB-C OTG (phone/tablet/other devices). *Hotkey to call this option from the main menu*: the **(X)** button (also used to exit MTP). After connecting the USB cable to the PC and starting the MTP server in DBI, the following window will appear on the PC:
+1: **SD-Karte** - zum Anzeigen, Kopieren und Löschen von Dateien und Ordnern von/nach einem PC und von/nach Ihrer SD-Karte. Ziehen Sie eine Datei größer als 4 GB auf die SD-Karte, und DBI teilt die Datei automatisch in einen archivierten Ordner auf, sodass die Switch sie als eine einzige Datei sieht. Auf diese Weise können Sie beispielsweise ganz einfach eine >4GB .XCI für die Verwendung in SX OS hinzufügen oder einen >4GB-Film für das Ansehen in NXMP oder pPlay hinzufügen.
 
-![image](https://user-images.githubusercontent.com/18294541/114265006-054f7f80-99f7-11eb-86c9-1a20d588e616.png)
+2: **NAND-Benutzer** - Anzeigen und Kopieren von Dateien und Ordnern von der internen Speicherpartition des Switch zum PC (diese Partition ist schreibgeschützt).
 
-1: **SD Card** - for viewing, copying and deleting files and folders from/to a PC and from/to your SD card. Drop a file larger than 4GB onto the SD card and DBI will automatically split the file into an archived folder which allows the Switch to see it as a single file, with this you can for example very easily add a >4GB .XCI for use in SX OS or add a >4GB movie for watching in NXMP or pPlay.
+3: **NAND-System** - Anzeigen und Kopieren von Dateien und Ordnern von der internen Speicherpartition des Switch zum PC (diese Partition ist schreibgeschützt).
 
-2: **NAND User** - view and copy files and folders to a PC from the Switch's internal memory USER partition (this partition is read-only).
+4: **Installierte Spiele** - Alle installierten Spiele werden sowohl aus NAND (internem Speicher des Switch) als auch von der SD-Karte angezeigt. Um installierte Spiele im NSP-Format auf Ihren PC zu dumpen, kopieren Sie einfach den Ordner mit dem Namen des Spiels von "Installierte Spiele" auf Ihren PC. Ein gemeinsamer Ticket mit vollständig gelöschten persönlichen Informationen wird basierend auf Ihrem personalisierten Ticket generiert. Ihr Dump wird in separaten Dateien - dem Spiel selbst, dem Update und allen DLC-Dateien - vorliegen. Wenn Cheats oder Mods für das Spiel installiert wurden, befinden sie sich im Ordner `Mods & Cheats`. Sie können auch eine einzige kombinierte Multicontent-Datei dumpen, die das Spiel selbst, das Update und alle DLC enthält. Diese Dateien befinden sich im Stammverzeichnis des Ordners **Installierte Spiele**.
 
-3: **NAND System** - view and copy files and folders to a PC from the Switch's internal memory SYSTEM partition (the partition is read-only).
+5: **SD install** - Lasse deine **NSP**/**NSZ**/**XCI** oder **XCZ**-Dateien in diesem Ordner fallen oder kopiere sie. Wenn der Transfer abgeschlossen ist, wird das Spiel auf der **SD-Karte** deiner Konsole installiert. Beachte, dass sich die tatsächliche Größe von NSZ- oder XCZ-Dateien nach der Installation erheblich von ihrer Originalgröße unterscheiden kann: Wenn du also beispielsweise mit 2 GB freiem Speicher auf deiner SD-Karte beginnst und nicht genügend Platz hast, um eine NSZ von 1 GB zu installieren, liegt das daran, dass NSZ- und XCZ-Dateien komprimiert sind und vor der Installation dekomprimiert werden müssen.
 
-4: **Installed games** - all installed games are displayed from both NAND (internal memory of the Switch) and SD card. To dump installed games to your PC in NSP format, just copy the folder with the name of the game from Installed games to your PC. A common ticket with completely cleared personal information is generated based on your personalized ticket. Your dump will be in separate files - the game itself, the update and any DLC files. If cheats or mods have been installed for the game, they will be located in the `Mods & Cheats` folder. You can also dump a single combined multicontent file containing the game itself, the update and all DLC, these files are located at the root of the **Installed games** directory.
+6: **NAND install** - Lasse deine **NSP**/**NSZ**/**XCI** oder **XCZ**-Dateien in diesem Ordner fallen oder kopiere sie. Wenn der Transfer abgeschlossen ist, wird das Spiel auf dem **internen Speicher** deiner Konsole installiert.
 
-5: **SD install** - Drop or copy your **NSP**/**NSZ**/**XCI** or **XCZ** files in this folder. When the transfer is complete the game will be installed on the **SD card** of your console. When installing NSZ or XCZ files, keep in mind that their actual size may differ greatly from their original size after installation: so if for example you start with 2GB free on your SD card and you do not have enough space to install an NSZ of 1GB in size, that is because NSZ and XCZ files are compressed and must be decompressed for installation.
+7: **Saves** - Zugriff auf alle Speichertypen, die im internen Speicher des Switch gespeichert sind: Konten **(Account)**, Systemprogramme **(System)**, Asymmetrische synchronisierte Hintergrundinhaltsübertragung (**BCAT**, zum Beispiel: Ereignisse in ACNH), temporäre **(Temporary)**, Cache (**Cache**, zum Beispiel: Add-Ons in DOOM), System-BCAT **(SystemBCAT)** und Gerätespeicher **(Device)**.
 
-6: **NAND install** - Drop or copy your **NSP**/**NSZ**/**XCI** or **XCZ** files in this folder. When the transfer is complete the game will be installed on the **internal memory** of your console.
+Sichere, wiederherstelle und verwalte Speicherdetails für installierte und deinstallierte Spiele. Du kannst Backups erstellen, indem du sie auf einen PC kopierst, und auch Speicher löschen, den du nicht mehr benötigst - öffne dazu den Ordner mit dem Namen des benötigten Spiels und lösche den entsprechenden Speicherordner.
+Um Speicher wiederherzustellen, kopiere sie aus deinem PC in den entsprechenden Ordner. DBI erfordert kein Vorausstarten des Spiels vor der Wiederherstellung eines Speichers.
 
-7: **Saves** - Access to all save types stored in the internal memory of the Switch: accounts **(Account)**, system programs **(System)**, Background Content Asymmetric synchronized delivery and Transmission (**BCAT**, for example: events in ACNH), temporary **(Temporary)**, cache (**Cache**, for example: addons in DOOM), system BCAT **(SystemBCAT)** and Device Saves **(Device)** 
+8: **Album** - Direkter Zugriff auf offizielle Album-Screenshots und Videos pro Spiel/Titel, ähnlich wie das offizielle Feature, das in OFW 11.0.0 hinzugefügt wurde.
 
-Backup, restore and manage save data for both installed and uninstalled games. You can make a backup of them by copying them to a PC and also delete saves that you no longer want or need - to do this open the folder with the name of the game you need, then delete the required save folder.
-In order to restore saves, copy them to the appropriate folder from your PC. DBI does not require pre-launching the game before restoring a save.
+9: **Gamecard** - Wenn eine Gamecard in den Switch eingelegt ist, kannst du diese auf dem PC als .XCI oder getrimmtes .XCI dumpen, zusammen mit dem darin enthaltenen Update, sofern vorhanden. Das persönliche RSA-Zertifikat wird automatisch entfernt und separat gedumpt.
 
-8: **Album** - direct access to official Album screenshots and videos per game/title, similar to the official feature added in OFW 11.0.0.
-
-9: **Gamecard** - with a gamecard inserted into the Switch you can dump to .XCI or trimmed .XCI on the PC, along with the update built into it if present. The personal RSA certificate automatically removed and is dumped separately.
-
-After activating the MTP server on the Switch a window will appear with your account nickname and its UID, as well as the number of game saves: 
+Nach Aktivierung des MTP-Servers auf dem Switch erscheint ein Fenster mit deinem Kontonamen und deiner UID sowie der Anzahl der Spielstände:
 
 ![2021041013152900](https://user-images.githubusercontent.com/18294541/114266673-27013480-9a00-11eb-81ba-f1ff1c3c5abb.jpg)
 
-#: **Custom Storage** - If you have defined a custom virtual MTP drive in the **[dbi.config](#dbiconfig)** file it will appear here.
+#: **Benutzerdefinierter Speicher** - Wenn du ein benutzerdefiniertes virtuelles MTP-Laufwerk in der **[dbi.config](#dbiconfig)**-Datei definiert hast, wird es hier angezeigt.
 
-To turn off the MTP server and exit to the main menu, press either the **(X)** or **(B)** button.
+Um den MTP-Server auszuschalten und zum Hauptmenü zurückzukehren, drücke entweder die **(X)**- oder **(B)**-Taste.
 
-### Activity Log
+### Aktivitätsprotokoll
 
-Displays activity graphs in games by dates for all existing users for each specific game.
+Zeigt Aktivitätsdiagramme in Spielen nach Datum für alle vorhandenen Benutzer für jedes spezifische Spiel an.
 
-Upon launch, two tabs are shown, which can be switched between using the (L) and (R) buttons:
+Beim Start werden zwei Registerkarten angezeigt, die mit den (L)- und (R)-Tasten gewechselt werden können:
 
-Hotkeys:
-* (L)/(R) - switch to the neighboring tab
-* (ZL)/(ZR) - change the date
-* (Y) - change the display period: all time, day, month, year
-* (X) - sorting: by game title, by number of launches, by time spent in the game
-* (+) - select a user for display
+Tastenkombinationen:
+* (L)/(R) - Wechsel zur benachbarten Registerkarte
+* (ZL)/(ZR) - Ändern des Datums
+* (Y) - Ändern des Anzeigezeitraums: Gesamtzeit, Tag, Monat, Jahr
+* (X) - Sortierung: nach Spieletitel, nach Anzahl der Starts, nach verbrachter Zeit im Spiel
+* (+) - Benutzer für die Anzeige auswählen
 
-#### Applications
+#### Anwendungen
 
-A list of games for which there is launch statistics is shown. At the top of the window is a status line of the following type:
+Es wird eine Liste der Spiele angezeigt, für die Startstatistiken vorhanden sind. Oben im Fenster befindet sich eine Statuszeile vom folgenden Typ:
 
-`[player] period. Total: number of hours (sorting method)`. For example, the line `[All players] 2023 January. Total: 72 hours (by play time)` means that the screen displays statistics **for all players for January 2023, sorted by game time, where 72 hours have been played**
+`[Spieler] Zeitraum. Insgesamt: Anzahl der Stunden (Sortiermethode)`. Zum Beispiel bedeutet die Zeile `[Alle Spieler] Januar 2023. Insgesamt: 72 Stunden (nach Spielzeit)`, dass die Statistiken **für alle Spieler für Januar 2023 angezeigt werden, sortiert nach Spielzeit, wobei 72 Stunden gespielt wurden**.
 
-The window is divided into three columns. From left to right:
-  * Game title
-  * Number of launches
-  * Amount of time spent in the game
+Das Fenster ist in drei Spalten unterteilt. Von links nach rechts:
+  * Spieltitel
+  * Anzahl der Starts
+  * Zeit, die im Spiel verbracht wurde
 
-When you press (A) on a game, you enter the **Activity** for the current game, where statistics for the selected game are shown. When you press (A) on an item, you will go deeper (year -> month -> day -> hour)
+Wenn du (A) auf ein Spiel drückst, gelangst du zur **Aktivität** für das aktuelle Spiel, wo Statistiken für das ausgewählte Spiel angezeigt werden. Wenn du (A) auf einen Eintrag drückst, gehst du tiefer (Jahr -> Monat -> Tag -> Stunde)
 
-#### Activity
+#### Aktivität
 
-Activity is shown as a diagram for all games at once. To go to the diagram for a specific game, go to the **Applications** tab and select a game to display.
+Die Aktivität wird als Diagramm für alle Spiele gleichzeitig angezeigt. Um zum Diagramm für ein bestimmtes Spiel zu gelangen, gehe zum Tab **Anwendungen** und wähle ein Spiel aus, um es anzuzeigen.
 
-### Configuration and dbi.config parameters
+### Konfiguration und dbi.config-Parameter
 
-The program configuration manager allows easy configuration of the program without editing `dbi.config`.
+Der Programm-Konfigurationsmanager ermöglicht eine einfache Konfiguration des Programms, ohne die Datei `dbi.config` manuell bearbeiten zu müssen.
 
-Below are the configuration items through GUI / The corresponding items in `dbi.config` will be indicated in parentheses.
+Nachfolgend sind die Konfigurationspunkte über die GUI aufgeführt. Die entsprechenden Einträge in `dbi.config` werden in Klammern angegeben.
 
-**true** in the configuration corresponds to **Yes** in the settings, **false** - **No**
+**true** in der Konfiguration entspricht **Ja** in den Einstellungen, **false** - **Nein**
 
-#### General (`[General]`)
+#### Allgemein (`[General]`)
 
-* **Use external USB drives** (`UseLibUsbHsFS`) - true enables the [libusbhsfs](https://github.com/DarkMatterCore/libusbhsfs) library for working with external USB drives through USB-OTG on the Switch, false disables it.
-* **Direct exit to homescreen** (`ExitToHomeScreen`) - if **false**, exiting DBI will go to hbmenu, if **true**, to the Switch home screen.
-* **Log events & operations** (`LogEvents`) - whether or not to save logs for "*Install*", "*Check integrity*", and "*Cleanup*" events.
-* **Highlight update files** (`HighlightUpdates`) - whether or not to highlight updates for installed games in the file manager.
-* **Rotate screen upside down** (`RotateScreen`) - rotates the screen by 180 degrees.
-* **Rotate joycon upside down** (`RotateJoycon`) - flips the controls to match the flipped screen.
-* **Use under/over clock** (`OptimizeClockSpeed`) - disables optimization of the SoC frequency during idle time. Disabled by default because it **may cause lag on the startup screen when exiting DBI incorrectly**! The correct exit method is through the **Exit** menu item.
-* **Browse saves in RO mode** (`ROSaveFS`) - view saves in read-only mode.
-* **Show 'Update From Here'** (`ShowUpdateFromHere`) - show the "Update all titles" button in the context menu for automatically updating installed games from all available sources (SD/USB/HTTP/FTP).
-* **Save backup folder** (`SavesFolder`) - folder for storing save backups.
-* **Logs folder** (`LogsFolder`) - folder for storing logs.
-* **Title dumps folder** (`DumpsFolder`) - folder on the memory card to which games will be dumped.
-* **Version info URL** (`VersionsURL`) - can accept a direct link to a file on a remote server or a file on the memory card. Examples:` https://raw.githubusercontent.com/blawar/titledb/master/versions.txt` or `sdmc:/versions.txt`.
-* **Show cache warming indicator** (`ShowCacheWarmingIndicator`) - show a notification when caching information about installed programs.
-* **Put cursor down after selection** (`MoveDownAfterX`) - whether or not to move the cursor down after marking a game with the **(X)** button.
-* **Screen idle time in seconds** (`ScreenIdleTimeout`) - screen shutdown timeout.
-* **Autorepeat buttons when holding** / **Автоповтор кнопки при удержании** (`Autorepeat`) - navigate through the menu by holding the button
-* **Cursor on both panels** / **Курсор на обеих панелях** (`Secondcursor`) - whether to display the cursor on the inactive panel or not
+* **Externe USB-Laufwerke verwenden** (`UseLibUsbHsFS`) - true aktiviert die [libusbhsfs](https://github.com/DarkMatterCore/libusbhsfs)-Bibliothek für die Arbeit mit externen USB-Laufwerken über USB-OTG auf der Switch, false deaktiviert sie.
+* **Direkter Ausgang zum Homescreen** (`ExitToHomeScreen`) - Wenn **false**, führt das Verlassen von DBI zum hbmenu, wenn **true**, zum Homescreen der Switch.
+* **Ereignisse und Operationen protokollieren** (`LogEvents`) - ob Ereignisprotokolle für "*Install*", "*Integrität prüfen*" und "*Aufräumen*" gespeichert werden sollen oder nicht.
+* **Update-Dateien hervorheben** (`HighlightUpdates`) - ob Updates für installierte Spiele im Dateimanager hervorgehoben werden sollen oder nicht.
+* **Bildschirm umdrehen (180 Grad)** (`RotateScreen`) - dreht den Bildschirm um 180 Grad.
+* **Joy-Con-Steuerung umdrehen** (`RotateJoycon`) - dreht die Steuerung um, um zum umgedrehten Bildschirm zu passen.
+* **Unter- / Übertaktung verwenden** (`OptimizeClockSpeed`) - deaktiviert die Optimierung der SoC-Frequenz während der Leerlaufzeit. Standardmäßig deaktiviert, da dies **Lags auf dem Startbildschirm verursachen kann, wenn DBI nicht korrekt beendet wird**! Die korrekte Beendigung erfolgt über den Menüpunkt **Beenden**.
+* **Sicherung von Speicherständen im Nur-Lese-Modus durchsuchen** (`ROSaveFS`) - Speicherstände im Nur-Lese-Modus anzeigen.
+* **'Von hier aktualisieren' anzeigen** (`ShowUpdateFromHere`) - zeigt die Schaltfläche "Alle Titel aktualisieren" im Kontextmenü zum automatischen Aktualisieren installierter Spiele aus allen verfügbaren Quellen (SD/USB/HTTP/FTP) an.
+* **Sicherungsordner für Speicherstände** (`SavesFolder`) - Ordner zum Speichern von Sicherungen von Speicherständen.
+* **Protokollordner** (`LogsFolder`) - Ordner zum Speichern von Protokollen.
+* **Ordner für Titeldumps** (`DumpsFolder`) - Ordner auf der Speicherkarte, in den Spiele gedumpt werden.
+* **Versionsinformations-URL** (`VersionsURL`) - kann einen direkten Link zu einer Datei auf einem entfernten Server oder einer Datei auf der Speicherkarte akzeptieren. Beispiele: `https://raw.githubusercontent.com/blawar/titledb/master/versions.txt` oder `sdmc:/versions.txt`.
+* **Cache-Wärmeindikator anzeigen** (`ShowCacheWarmingIndicator`) - zeigt eine Benachrichtigung an, wenn Informationen über installierte Programme gecacht werden.
+* **Cursor nach Auswahl nach unten setzen** (`MoveDownAfterX`) - ob der Cursor nach Markierung eines Spiels mit der **(X)**-Taste nach unten bewegt werden soll oder nicht.
+* **Bildschirm-Leerlaufzeit in Sekunden** (`ScreenIdleTimeout`) - Zeit bis zur Bildschirmabschaltung.
+* **Tastenautomatik beim Halten** / **Autorepeat** (`Autorepeat`) - durch Halten der Taste im Menü navigieren
+* **Cursor auf beiden Panels** / **Secondcursor** (`Secondcursor`) - ob der Cursor auf dem inaktiven Panel angezeigt werden soll oder nicht
 
-**Exists in the config, but not in the menu:**
+**Existiert in der Konfiguration, aber nicht im Menü:**
 
-* **AppSorting** - options for sorting the list of applications
-* **SaveSorting** - options for sorting saves
+* **AppSorting** - Optionen zum Sortieren der Liste der Anwendungen
+* **SaveSorting** - Optionen zum Sortieren von Speicherständen
 
-#### Main menu (`[MainMenu]`)
+#### Hauptmenü (`[MainMenu]`)
 
-Settings for the menu items that will be displayed in the main DBI menu. **Yes** in the settings corresponds to **true** in the config, **No** corresponds to **false**.
+Einstellungen für die Menüpunkte, die im Hauptmenü von DBI angezeigt werden sollen. **Ja** in den Einstellungen entspricht **true** in der Konfiguration, **Nein** entspricht **false**.
 
-* **Browse SD Card** (`BrowseSD`) - menu item "[Browse SD Card and Browse USB0 Drive](#browse-sd-card--browse-usb0-drive)", for installing games from an SD card
-* **Browse System** (`BrowseSystem`) - allows browsing and copying files from the SYSTEM partition
-* **Browse User** (`BrowseUser`) - allows browsing and copying files from the USER partition
-* **Browse USB** (`USBHost`) - menu item "**Browse USB0 Drive**", for installing games from an external USB drive
-* **Install from USB** (`BackendInstall`) - menu item "[Install title from DBIbackend](#install-title-from-dbibackend)", for installing titles from the DBI backend
-* **Install from Gamecard** (`GameCard`) - menu item "**Install title from Gamecard**", for installing content from game cartridges to the console memory
-* **Browse Network** (`Network`) - menu item "**Home server**", for installing games from a home web server
-* **Browse SD shortcuts** (`Local`) - whether to show links to folders in the [Local sources](#local-sources) section or not
-* **Browse applications** (`BrowseApps`) - menu item "[Browse installed applications](#browse-installed-applications)", for managing installed applications
-* **Cleanup orphaned files** (`Cleanup`) - menu item "[Cleanup orphaned files](#cleanup-orphaned-files)", for cleaning up orphaned files from the memory card
-* **Check title updates** (`UpdateCheck`) - menu item "**Check for title updates**", for checking for updates and DLC for installed games
-* **Browse tickets** (`Tickets`) - menu item "[Browse tickets](#browse-tickets)", for managing tickets
-* **Browse saves** (`Saves`) - [Browse saves](#browse-saves)
-* **Run MTP responder** (`MTP`) - menu item "[Run MTP responder](#run-mtp-responder)", for starting MTP
-* **Run FTP server** (`FTP`) - menu item "**Run FTP server**", for starting FTP
+* **SD-Karte durchsuchen** (`BrowseSD`) - Menüpunkt "[SD-Karte durchsuchen und USB0-Laufwerk durchsuchen](#browse-sd-card--browse-usb0-drive)", um Spiele von einer SD-Karte zu installieren
+* **System durchsuchen** (`BrowseSystem`) - ermöglicht das Durchsuchen und Kopieren von Dateien aus der SYSTEM-Partition
+* **Benutzer durchsuchen** (`BrowseUser`) - ermöglicht das Durchsuchen und Kopieren von Dateien aus der USER-Partition
+* **USB durchsuchen** (`USBHost`) - Menüpunkt "**USB0-Laufwerk durchsuchen**", um Spiele von einem externen USB-Laufwerk zu installieren
+* **Von USB installieren** (`BackendInstall`) - Menüpunkt "[Titel von DBI-Backend installieren](#install-title-from-dbibackend)", um Titel vom DBI-Backend zu installieren
+* **Von Gamecard installieren** (`GameCard`) - Menüpunkt "**Titel von Gamecard installieren**", um Inhalte von Spielkarten auf den Systemspeicher zu installieren
+* **Netzwerk durchsuchen** (`Network`) - Menüpunkt "**Heimserver**", um Spiele von einem Heim-Webserver zu installieren
+* **SD-Verknüpfungen durchsuchen** (`Local`) - ob Links zu Ordnern im Abschnitt [Lokale Quellen](#local-sources) angezeigt werden sollen oder nicht
+* **Anwendungen durchsuchen** (`BrowseApps`) - Menüpunkt "[Installierte Anwendungen durchsuchen](#browse-installed-applications)", um installierte Anwendungen zu verwalten
+* **Verwaiste Dateien bereinigen** (`Cleanup`) - Menüpunkt "[Verwaiste Dateien bereinigen](#cleanup-orphaned-files)", um verwaiste Dateien von der Speicherkarte zu entfernen
+* **Titelaktualisierungen überprüfen** (`UpdateCheck`) - Menüpunkt "**Nach Titelaktualisierungen suchen**", um nach Updates und DLC für installierte Spiele zu suchen
+* **Tickets durchsuchen** (`Tickets`) - Menüpunkt "[Tickets durchsuchen](#browse-tickets)", um Tickets zu verwalten
+* **Speicherstände durchsuchen** (`Saves`) - [Speicherstände durchsuchen](#browse-saves)
+* **MTP-Server starten** (`MTP`) - Menüpunkt "[MTP-Server starten](#run-mtp-responder)", um MTP zu starten
+* **FTP-Server starten** (`FTP`) - Menüpunkt "**FTP-Server starten**", um FTP zu starten
 
-#### Applications / Installed games (`[Applications]`)
+#### Anwendungen / Installierte Spiele (`[Applications]`)
 
-* **Show LFS folder size (slow)** (`CalculateLFSSize`) - Enables or disables the calculation of the size of installed LFS mods. If enabled, it may affect the speed of opening the "*Browse installed applications*" menu.
+* **LFS-Ordnergröße anzeigen (langsam)** (`CalculateLFSSize`) - Aktiviert oder deaktiviert die Berechnung der Größe installierter LFS-Mods. Wenn aktiviert, kann dies die Geschwindigkeit beim Öffnen des Menüs "*Installierte Anwendungen durchsuchen*" beeinträchtigen.
 
-##### Install options (`[Install]`)
+##### Installationsoptionen (`[Install]`)
 
-* **Check hash during install** (`CheckHash`) - When set to **true**, the hash of `.nca` files is checked during game installation on the Switch. When set to **false**, it is not checked.
-* **Chunked HTTP/FTP transfer** (`ChunkedTransfer`) - Enables or disables chunked transfer of data over HTTP.
+* **Prüfen des Hash während der Installation** (`CheckHash`) - Wenn auf **true** gesetzt, wird der Hash von `.nca`-Dateien während der Spielinstallation auf der Switch überprüft. Wenn auf **false** gesetzt, wird er nicht überprüft.
+* **Chunked HTTP/FTP-Übertragung** (`ChunkedTransfer`) - Aktiviert oder deaktiviert die segmentierte Übertragung von Daten über HTTP.
 
-#### MTP options (`[MTP]`)
+#### MTP-Optionen (`[MTP]`)
 
-* **Show combined NSP** (`ShowCombinedNSPInInstalledGames`) - When set to **false**, multi-title .NSP files are not shown in the Installed games menu in MTP mode.
-* **Show 'Mods & Cheats' folder** (`ShowMACInInstalledGames`) - When set to false, the virtual directory **Mods & cheats** in the Installed games menu in MTP mode is not shown, which redirects to `sdmc:/atmosphere/contents/TITLEID/` on the memory card.
-* **Use TitleID for 'Mods & Cheats'** (`MACasTID`) - Displays the "Mods & Cheats" folder in MTP mode as a TitleID.
-* **Turn off screen** (`TurnOffScreen`) - Enables or disables turning off the console screen when connected in MTP mode.
-* **Android extensions** (`ReportAndroidExtension`) - whether to use the corresponding command set when working with MTP. Sometimes PC clients based on libmtp (Mac or Linux) do not correctly recognize the device, which may result in a decrease in data transfer speed. In such cases, it is recommended to try changing this setting.
+* **Kombinierte NSP anzeigen** (`ShowCombinedNSPInInstalledGames`) - Wenn auf **false** gesetzt, werden Mehrfachtitel-NSP-Dateien nicht im Menü "Installierte Spiele" im MTP-Modus angezeigt.
+* **'Mods & Cheats'-Ordner anzeigen** (`ShowMACInInstalledGames`) - Wenn auf false gesetzt, wird das virtuelle Verzeichnis **Mods & Cheats** im Menü "Installierte Spiele" im MTP-Modus nicht angezeigt, das auf `sdmc:/atmosphere/contents/TITLEID/` auf der Speicherkarte verweist.
+* **TitleID für 'Mods & Cheats' verwenden** (`MACasTID`) - Zeigt den Ordner "Mods & Cheats" im MTP-Modus als TitleID an.
+* **Bildschirm ausschalten** (`TurnOffScreen`) - Aktiviert oder deaktiviert das Ausschalten des Konsolenbildschirms beim Anschließen im MTP-Modus.
+* **Android-Erweiterungen** (`ReportAndroidExtension`) - Ob der entsprechende Befehlssatz bei der Arbeit mit MTP verwendet werden soll. Manchmal erkennen PC-Clients auf der Grundlage von libmtp (Mac oder Linux) das Gerät möglicherweise nicht korrekt, was zu einer Verringerung der Datenübertragungsgeschwindigkeit führen kann. In solchen Fällen wird empfohlen, diese Einstellung zu ändern.
 
-**In the config but not in the menu:**
+**In der Konfiguration, aber nicht im Menü:**
 
-* **LogAllFiles** - When set to **false**, files smaller than 4 MB are not logged when working with MTP. When set to **true**, all files are logged.
+* **LogAllFiles** - Wenn auf **false** gesetzt, werden Dateien kleiner als 4 MB beim Arbeiten mit MTP nicht protokolliert. Wenn auf **true** gesetzt, werden alle Dateien protokolliert.
 
-#### MTP Storages (`[MTP Storages]`)
+#### MTP-Speicher (`[MTP Storages]`)
 
-Displays the corresponding items when using [MTP Responder](#run-mtp-responder) with a PC/Android. By default, all items are enabled for display.
+Zeigt die entsprechenden Elemente an, wenn [MTP Responder](#run-mtp-responder) mit einem PC/Android verwendet wird. Standardmäßig sind alle Elemente für die Anzeige aktiviert.
 
-**true** - display in the main menu, **false** - do not display.
+**true** - Anzeige im Hauptmenü, **false** - nicht anzeigen.
 
-The names of the items correspond to the section names.
+Die Namen der Elemente entsprechen den Abschnittsnamen.
 
-* **SD Card** (`1: SD Card`)
+* **SD-Karte** (`1: SD-Karte`)
 * **Nand USER** (`2: Nand USER`)
 * **Nand SYSTEM** (`3: Nand SYSTEM`)
-* **Installed games** (`4: Installed games`)
-* **SD install** (`5: SD install`)
-* **NAND install** (`6: NAND install`)
+* **Installierte Spiele** (`4: Installierte Spiele`)
+* **SD-Installation** (`5: SD-Installation`)
+* **NAND-Installation** (`6: NAND-Installation`)
 * **Saves** (`7: Saves`)
 * **Album** (`8: Album`)
-* **Gamecard** (`9: Gamecard`)
-* **Show custom storages** (`CustomStorages`) - show or hide custom menu items specified in the MTP custom storages section.
+* **Spielkarte** (`9: Spielkarte`)
+* **Benutzerdefinierte Speicher anzeigen** (`CustomStorages`) - Anzeigen oder Ausblenden benutzerdefinierter Menüelemente, die im Abschnitt "MTP-Benutzerdefinierte Speicher" angegeben sind.
 
-#### FTP Options (`[FTP]`)
+#### FTP-Optionen (`[FTP]`)
 
-* **Turn off screen** (`TurnOffScreen`) - turn off the screen when entering FTP mode.
-* **Start local Access point** (`UseAP`) - enable Switch to work as an access point that FTP clients can connect to directly. Below are settings for this access point.
-* **Read file date** / **Читать дату файлов** (`ReadMT`) - whether to read the file modification date or not
+* **Bildschirm ausschalten** (`TurnOffScreen`) - Bildschirm ausschalten beim Betreten des FTP-Modus.
+* **Lokalen Access Point starten** (`UseAP`) - Schaltet den Switch ein, damit er als Zugriffspunkt arbeiten kann, zu dem FTP-Clients direkt eine Verbindung herstellen können. Unten befinden sich Einstellungen für diesen Zugriffspunkt.
+* **Dateidatum lesen** (`ReadMT`) - Ob das Änderungsdatum der Datei gelesen werden soll oder nicht.
 
-#### Access Point (`[Access point]`)
+#### Zugriffspunkt (`[Access point]`)
 
-* **SSID** (`SSID`) - the name of the access point.
-* **Password** (`Password`) - the password.
-* **Use 5 GHz** (`Use5GHz`) - whether to use 5 GHz. If turned off, it will work in 2.4 GHz mode.
-* **Use hidden SSID** (`Hidden`) - hide the SSID for search. This means that it can only be connected to by entering the specified SSID.
+* **SSID** (`SSID`) - der Name des Zugriffspunkts.
+* **Passwort** (`Password`) - das Passwort.
+* **5 GHz verwenden** (`Use5GHz`) - ob 5 GHz verwendet werden soll. Wenn es deaktiviert ist, wird es im 2,4 GHz-Modus arbeiten.
+* **Versteckte SSID verwenden** (`Hidden`) - die SSID für die Suche verstecken. Dies bedeutet, dass sie nur verbunden werden kann, indem die angegebene SSID eingegeben wird.
 
-#### Exists in Config, but not in menu
+#### Existiert in der Konfiguration, aber nicht im Menü
 
-##### [Network sources](#network-sources)
-Names and addresses for setting up network installs (via WiFi/LAN adapter)
+##### [Netzwerkquellen](#network-sources)
+Namen und Adressen zur Einrichtung von Netzwerkinstallationen (über WLAN/LAN-Adapter)
 
-**NSP Indexer** - address for indexing NSP ([details](https://github.com/rashevskyv/dbi/issues/44))
+**NSP-Indexer** - Adresse für das Indexieren von NSP ([Details](https://github.com/rashevskyv/dbi/issues/44))
 
-##### **Local sources**
+##### **Lokale Quellen**
 
-Create menu items with quick access to selected folders on the memory card configured in the config (like "shortcuts"), for example:
+Erstellen Sie Menüelemente mit schnellem Zugriff auf ausgewählte Ordner auf der Speicherkarte, die in der Konfiguration konfiguriert sind (ähnlich wie "Verknüpfungen"), zum Beispiel:
 
-`Homebrew Shortcut=sdmc:/switch` will create a "**Homebrew Shortcut**" menu item that opens the `sdmc:/switch` folder.
+`Homebrew Shortcut=sdmc:/switch` erstellt ein Menüelement "**Homebrew Shortcut**", das den Ordner `sdmc:/switch` öffnet.
 
-##### **MTP custom storages**
+##### **MTP-Benutzerdefinierte Speicher**
 
-Custom items for MTP mode for quick access to folders on your memory card. Format: `<displayed_folder_name>=<path>`, for example: `Homebrew=sdmc:/switch`.
-In MTP mode, a `Homebrew` folder will appear that links to the `switch` folder on your memory card.
+Benutzerdefinierte Elemente für den MTP-Modus für schnellen Zugriff auf Ordner auf Ihrer Speicherkarte. Format: `<angezeigter_Ordnername>=<Pfad>`, zum Beispiel: `Homebrew=sdmc:/switch`.
+Im MTP-Modus wird ein `Homebrew`-Ordner angezeigt, der auf den `switch`-Ordner auf Ihrer Speicherkarte verweist.
 
-##### **Title name override**
+##### **Titelnamenüberschreibung**
 
-Allows you to change the displayed title name. For example, if you specify `10023901191C000=Naheulbeuk`, then in the application, instead of `The Dungeon of Naheulbeuk: The Amulet of Chaos`, it will display simply `Naheulbeuk`.
+Ermöglicht es, den angezeigten Titelnamen zu ändern. Wenn du zum Beispiel `10023901191C000=Naheulbeuk` angibst, wird in der Anwendung anstelle von `The Dungeon of Naheulbeuk: The Amulet of Chaos` einfach `Naheulbeuk` angezeigt.
 
-### Exit
+### Beenden
 
-**Exit** - exits the program to HOS, bypassing hbmenu, or to hbmenu (configurable in dbi.config); if dbi was launched from a title/forwarder, the program will reboot or remain on a black screen.
+**Beenden** - beendet das Programm und kehrt zum HOS zurück, umgeht hbmenu oder kehrt zu hbmenu zurück (konfigurierbar in dbi.config); wenn DBI von einem Titel/Forwarder aus gestartet wurde, wird das Programm neu gestartet oder bleibt auf einem schwarzen Bildschirm.
 
-## Warnings and errors
-### Warnings
+## Warnungen und Fehler
+### Warnungen
 
-Displayed in orange. These are NOT errors!
+In Orange dargestellt. Dies sind KEINE Fehler!
 
-* **[SIGNATURE: Invalid]**, **[SIGNATURE: XCI->NSP]**, **[HASH NOT MATCHED TO META]**, **[HASH FIXED IN META]** — these are NOT errors, but notifications of signature mismatch in headers, for example, when using conversion or editing, custom NSP, forwarder.
-* **HASH MISMATCH** — most often, this is NOT an error, the game was converted from a cartridge (then everything is fine), sometimes there are problems with file integrity, re-download/re-hash it, data transfer via USB cable/port/during installation between PC and Switch.
-If the game does not launch or launches with an error, try to reinstall it again, check or replace the USB cable/SD/change USB port.
-* **[DELTA SKIPPED]** — this is NOT an error, but a notification that unnecessary fragments in the update file were skipped if they were in it, as it should have been.
-* **No tickets found** — this is NOT an error, it does not affect the game's functionality, but informs that the game is without tickets. It may be a dump from a .XCI cartridge or converted to Standard Crypto.
-* **Application uses AddonContent titleId**, **Application uses Update titleId** — this is NOT an error, usually indicating a homebrew game in .NSP, created not to standard, for example, when AddonContent flag (DLC) was added to the Application title (main game, v0).
-If such a game launches and works, then everything is fine.
-* **This application base is not stand alone. Make sure you installed update** - when installing new Sparse Storage games — this is NOT an error, do not forget, in addition to the game's base file, to also install an update to it before launching.
+* **[SIGNATURE: Ungültig]**, **[SIGNATURE: XCI->NSP]**, **[HASH NICHT MIT META ÜBEREINSTIMMEND]**, **[HASH IN META BEHOBEN]** — dies sind KEINE Fehler, sondern Benachrichtigungen über eine Signaturenungleichheit in den Headern, zum Beispiel bei der Verwendung von Konvertierung oder Bearbeitung, benutzerdefiniertem NSP, Forwarder.
+* **HASH-UNSTIMMIGKEIT** — meistens KEIN Fehler, das Spiel wurde von einer Cartridge konvertiert (dann ist alles in Ordnung), manchmal gibt es Probleme mit der Dateiintegrität, lade sie erneut herunter/hash sie erneut, übertrage Daten über das USB-Kabel/USB-Port/beim Installieren zwischen PC und Switch.
+Wenn das Spiel nicht startet oder mit einem Fehler startet, versuche es erneut zu installieren, überprüfe oder ersetze das USB-Kabel/SD-Ändere den USB-Port.
+* **[DELTA ÜBERSPRUNGEN]** — dies ist KEIN Fehler, sondern eine Benachrichtigung, dass unnötige Fragmente in der Update-Datei übersprungen wurden, wenn sie vorhanden waren, wie es sein sollte.
+* **Keine Tickets gefunden** — dies ist KEIN Fehler, es beeinträchtigt nicht die Funktionalität des Spiels, informiert aber darüber, dass das Spiel ohne Tickets ist. Es kann sich um einen Dump aus einer .XCI-Cartridge handeln oder um eine Konvertierung in Standard Crypto.
+* **Anwendung verwendet AddonContent-Titel-ID**, **Anwendung verwendet Update-Titel-ID** — dies ist KEIN Fehler und zeigt in der Regel ein Homebrew-Spiel in .NSP an, das nicht nach Standard erstellt wurde, zum Beispiel wenn das AddonContent-Flag (DLC) dem Anwendungstitel (Hauptspiel, v0) hinzugefügt wurde.
+Wenn ein solches Spiel startet und funktioniert, ist alles in Ordnung.
+* **Diese Anwendungsgrundlage ist nicht eigenständig. Stelle sicher, dass du das Update installiert hast** - beim Installieren neuer Sparse Storage-Spiele — dies ist KEIN Fehler, vergiss nicht, zusätzlich zur Basisspieldatei auch ein Update dafür zu installieren, bevor du es startest.
 
-### ERRORs
+### FEHLER
 
-* **USB communication failed** - check/replace USB cable and USB port on PC.
-* **Cannot parse content meta**:
-  * **Old firmware** - your firmware is too outdated to analyze the metafile. Update CFW and system software to the latest versions
-  * **Unexpected error** - the file is corrupted. Check and re-download the file.
-* **Invalid PFS0 magic!** - redownload the game installer file and check its integrity, as this file is corrupted.
-* **[INVALID NCA MAGIC]** - update to the latest version of OFW and CFW, and if the error persists, double-check the integrity of the game installer file.
-* **Installation aborted** - data transmission error, double-check and if necessary, replace the USB cable/USB port between the Switch and PC. Also, make sure that you have installed the latest version of the software, as in this post.
-* **Nothing to install** - in the file selection window, rename the file without special characters, hieroglyphs, or Cyrillic in the name and path to it.
-* **Transfer error**, **[TRANSFER CRC ERROR]**, **[TRANSFER ABORTED]** - check the USB-C cable connection and USB port, check with other USB-C cables, check the integrity of the game file and memory card for errors. When installing via MTP, launch dbi through any game (title) while holding down the (R) button, rather than in applet mode through albums.
-* **Error occurred: Invalid argument** - update your dbi to the latest version.
-* **SOME CONTENTS ARE MISSING. APPLICATION WILL BE UNUSABLE** - a corrupt file system on the memory card or a non-working/poor quality flash drive. Check it with chkdsk and h2testw; if there are no errors, reformat to FAT32.
-* **[NOT ENOUGH SPACE]**, **[CAN NOT CREATE PLACEHOLDER]** - there is not enough space on the memory card/NAND, free up more space or check the memory card. Check it with chkdsk and h2testw; if there are no errors, reformat to FAT32.
-* **Extra buffers exceeded. Media write speed is too low** - when installing via MTP, launch dbi through any game (title) while holding down the **(R)** button. Alternatively, use an NSP-forwarder and a faster SD card with a different USB cable/port.
-* **No tickets found but they are required** - an incorrect (incomplete, without a ticket but with titlerights) game dump, find another.
-* **Invalid personalized ticket** - This error occurs at the end of game installation when installing a .tik ticket, indicating that an incorrect game dump was used where a personalized ticket from the console on which the game was purchased was left instead of a common ticket. Please download another correct dump.
-* **No ES sigpatches!** - This error message means that the ES sigpatches are either outdated, incorrect, or not installed on the console. Please install the latest version of the ES sigpatches.
+* **USB-Kommunikation fehlgeschlagen** - Überprüfe/ersetze das USB-Kabel und den USB-Port am PC.
+* **Metadateninhalt kann nicht analysiert werden**:
+  * **Alte Firmware** - deine Firmware ist zu veraltet, um die Metadatendatei zu analysieren. Aktualisiere die CFW und die Systemsoftware auf die neuesten Versionen.
+  * **Unerwarteter Fehler** - die Datei ist beschädigt. Überprüfe und lade die Datei erneut herunter.
+* **Ungültige PFS0-Magie!** - Lade die Installationsdatei des Spiels erneut herunter und überprüfe ihre Integrität, da diese Datei beschädigt ist.
+* **[UNGÜLTIGE NCA-MAGIE]** - Aktualisiere auf die neueste Version von OFW und CFW, und überprüfe bei fortbestehendem Fehler die Integrität der Installationsdatei des Spiels erneut.
+* **Installation abgebrochen** - Datenübertragungsfehler, überprüfe und falls erforderlich, ersetze das USB-Kabel/USB-Port zwischen der Switch und dem PC. Stelle außerdem sicher, dass du die neueste Version der Software installiert hast, wie in diesem Beitrag.
+* **Nichts zu installieren** - Im Dateiauswahlmenü benenne die Datei ohne Sonderzeichen, Hieroglyphen oder kyrillische Buchstaben im Namen und Pfad um.
+* **Transferfehler**, **[ÜBERTRAGUNGS-CRC-FEHLER]**, **[ÜBERTRAGUNG ABGEBROCHEN]** - Überprüfe die USB-C-Kabelverbindung und den USB-Port, überprüfe mit anderen USB-C-Kabeln, überprüfe die Integrität der Spieledatei und der Speicherkarte auf Fehler. Beim Installieren über MTP starte dbi durch ein beliebiges Spiel (Titel), während du die (R)-Taste gedrückt hältst, anstatt im Applet-Modus über Alben.
+* **Fehler aufgetreten: Ungültiges Argument** - Aktualisiere deine dbi auf die neueste Version.
+* **EINIGE INHALTE FEHLEN. DIE ANWENDUNG WIRD UNBENUTZBAR SEIN** - ein beschädigtes Dateisystem auf der Speicherkarte oder ein nicht funktionierendes/schlecht verarbeitetes Flash-Laufwerk. Überprüfe es mit chkdsk und h2testw; wenn keine Fehler gefunden werden, formatiere es neu mit FAT32.
+* **[NICHT GENÜGEND SPEICHERPLATZ]**, **[PLATZHALTER KANN NICHT ERSTELLT WERDEN]** - Es gibt nicht genügend Speicherplatz auf der Speicherkarte/NAND, schaffe mehr Platz oder überprüfe die Speicherkarte. Überprüfe es mit chkdsk und h2testw; wenn keine Fehler gefunden werden, formatiere es neu mit FAT32.
+* **Zusätzliche Puffer überschritten. Die Schreibgeschwindigkeit des Mediums ist zu niedrig** - Beim Installieren über MTP starte dbi durch ein beliebiges Spiel (Titel), während du die **(R)-Taste** gedrückt hältst. Alternativ verwende einen NSP-Forwarder und eine schnellere SD-Karte mit einem anderen USB-Kabel/Port.
+* **Keine Tickets gefunden, aber sie sind erforderlich** - Ein falscher (unvollständiger, ohne Ticket, aber mit Titelrechten) Spieledump, finde einen anderen.
+* **Ungültiges personalisiertes Ticket** - Dieser Fehler tritt am Ende der Spielinstallation auf, wenn ein .tik-Ticket installiert wird, und deutet darauf hin, dass ein falscher Spieledump verwendet wurde, bei dem ein personalisiertes Ticket von der Konsole, auf der das Spiel gekauft wurde, anstelle eines gemeinsamen Tickets verbleiben wurde. Bitte lade einen anderen korrekten Dump herunter.
+* **Keine ES-Sigpatches vorhanden!** - Diese Fehlermeldung bedeutet, dass die ES-Sigpatches veraltet, falsch oder nicht auf der Konsole installiert sind. Bitte installiere die neueste Version der ES-Sigpatches.
 
-### Color codes:
+  ### Farbcodes:
 
-* In all menus
-  * <span style="color:#ffffff; background-color: black;">WHITE on BLACK BG</span> - focused
-  * <span style="color:#008578; background-color: #000084;">BLUE</span> - selected (with **(X)** button)
-* In "**Browse SD Card**"
-  * <span style="color:#c7c6d6; background-color: #000084;">WHITE</span> - folder 
-  * <span style="color:#80878f; background-color: #000084;">LIGHT GREY</span> - file
-  * <span style="color:#414e54; background-color: #000084;">DARK GREY</span> - installed game
-  * <span style="color:#3bce28; background-color: #000084;">GREEN</span> - update or DLC for installed game
-* In "**Browse installed applications**"
-  * <span style="color:#cebfde; background-color: #000084;">WHITE</span> - installed game
-  * <span style="color:#8e0000; background-color: #000084;">RED</span> - installed update or DLC without game
-* **In logs** on installation: 
-  * <span style="color:#00ff02; background-color: #000084;">GREEN</span> - no errors
-  * <span style="color:#fa7f08; background-color: #000084;">ORANGE</span> - no errors, but warnings (for example, installed NSP is XCI convert, or hash was fixed on meta)
-  * <span style="color:#f80100; background-color: #000084;">RED</span> - [errors](#errors). File was not installed
-* **In logs** after installation: 
-  * <span style="color:#00ff02; background-color: #000084;">GREEN</span> - ended with no errors
-  * <span style="color:#f6ff05; background-color: #000084;">YELLOW</span> - ended with no errors but with warnings
-  * <span style="color:#f80100; background-color: #000084;">RED</span> - ended with errors
-
-## dbi.config
-The `dbi.config` file is responsible for storing program settings. It is located next to `DBI.nro`
-
-Let's take a look at its contents:
+* In allen Menüs
+  * <span style="color:#ffffff; background-color: black;">WEISS auf SCHWARZEM HG</span> - fokussiert
+  * <span style="color:#008578; background-color: #000084;">BLAU</span> - ausgewählt (mit **(X)**-Taste)
+* In "**SD-Karte durchsuchen**"
+  * <span style="color:#c7c6d6; background-color: #000084;">WEISS</span> - Ordner
+  * <span style="color:#80878f; background-color: #000084;">HELLGRAU</span> - Datei
+  * <span style="color:#414e54; background-color: #000084;">DUNKELGRAU</span> - installiertes Spiel
+  * <span style="color:#3bce28; background-color: #000084;">GRÜN</span> - Update oder DLC für installiertes Spiel
+* In "**Installierte Anwendungen durchsuchen**"
+  * <span style="color:#cebfde; background-color: #000084;">WEISS</span> - installiertes Spiel
+  * <span style="color:#8e0000; background-color: #000084;">ROT</span> - installiertes Update oder DLC ohne Spiel
+* **In Protokollen** bei der Installation:
+  * <span style="color:#00ff02; background-color: #000084;">GRÜN</span> - keine Fehler
+  * <span style="color:#fa7f08; background-color: #000084;">ORANGE</span> - keine Fehler, aber Warnungen (zum Beispiel, installierte NSP ist XCI-Konvertierung oder Hash wurde in Meta repariert)
+  * <span style="color:#f80100; background-color: #000084;">ROT</span> - [Fehler](#fehler). Datei wurde nicht installiert
+* **In Protokollen** nach der Installation:
+  * <span style="color:#00ff02; background-color: #000084;">GRÜN</span> - endete ohne Fehler
+  * <span style="color:#f6ff05; background-color: #000084;">GELB</span> - endete ohne Fehler, aber mit Warnungen
+  * <span style="color:#f80100; background-color: #000084;">ROT</span> - endete mit Fehlern
+  
+Die `dbi.config`-Datei ist für die Speicherung der Programm-Einstellungen verantwortlich. Sie befindet sich neben `DBI.nro`. 
+Hier ist ihr Inhalt:
 ```
-; General settings
+; Allgemeine Einstellungen
 [General]
-; Use libusbhsfs for access to USB mass storage drives connected to switch or dock
+; Verwenden von libusbhsfs für den Zugriff auf USB-Massenspeicherlaufwerke, die an Switch oder Dock angeschlossen sind
 UseLibUsbHsFS=true
-; Direct exit to homescreen
+; Direkter Startbildschirm
 ExitToHomeScreen=false
-; Folder where saves backups are stored
+; Ordner, in dem Sicherungskopien von Spielständen gespeichert werden
 SavesFolder=sdmc:/switch/DBI/saves/
-; Log "Install", "Check integrity" and "Cleanup" processes
+; Protokollierung von "Installieren", "Integrität prüfen" und "Aufräumen" Prozessen
 LogEvents=false
-; Folder where logs are stored
+; Ordner, in dem Protokolle gespeichert werden
 LogsFolder=sdmc:/switch/DBI/logs/
-; Folder where game dumps are stored
+; Ordner, in dem Spieldumps gespeichert werden
 DumpsFolder=sdmc:/switch/DBI/dumps/
-; Sorting options for application list
+; Sortierungsoptionen für die Anwendungsliste
 AppSorting=LastPlayed,InstallLocation,Size,Name
-; Sorting options for save list
+; Sortierungsoptionen für die Speicherliste
 SaveSorting=AppLastPlayed,AppName,UserUid,Size,SaveId
-; Highlight files with updates to curently instaled titles in file browsers
+; Hervorhebung von Dateien mit Updates für aktuell installierte Titel im Dateibrowser
 HighlightUpdates=true
-; Rotate screen upside down
+; Bildschirm umdrehen
 RotateScreen=false
-; Rotate joycons
+; Joy-Cons umdrehen
 RotateJoycon=false
-; Underclock CPU in menues to reduce battery usage
+; CPU in Menüs untertakten, um den Batterieverbrauch zu reduzieren
 OptimizeClockSpeed=false
-; URL with title versions in format <id>|<rightsId>|[version]
+; URL mit Titelversionen im Format <id>|<rightsId>|[version]
 VersionsURL=https://raw.githubusercontent.com/blawar/titledb/master/versions.txt
 ;VersionsURL=sdmc:/versions.txt
-;Browse saves FS in Read-only mode
+; Durchsuchen von Speichern im Nur-Lese-Modus
 ROSaveFS=true
-; Show "Update all items from here..." in context menu of file browsers
+; "Alle Elemente von hier aktualisieren..." im Kontextmenü der Dateibrowser anzeigen
 ShowUpdateFromHere=false
-; Show cache warming spinner
+; Anzeigen des Cache-Wärmezeichens
 ShowCacheWarmingIndicator=true
-; Move cursor down after selection
+; Cursor nach Auswahl nach unten bewegen
 MoveDownAfterX=true
-; Screen idle timeout in seconds
+; Bildschirm-Leerlaufzeit in Sekunden
 ScreenIdleTimeout=0
-; Auto repeat nav. buttons when holding
+; Auto-Wiederholung von Navigationsbuttons beim Halten
 Autorepeat=true
-; Show cursors on both panels in two-panel browsinig mode
+; Cursor auf beiden Panels in Zwei-Panel-Browsermodus anzeigen
 Secondcursor=false
-; Backup saves before delete
+; Sicherung von Spielständen vor dem Löschen
 FoolproofSaveDelete=true
 
-; Visibility of main menu items
+; Sichtbarkeit der Hauptmenüpunkte
 [MainMenu]
-; Browse and install files from SD card
+; Durchsuchen und Installieren von Dateien von der SD-Karte
 BrowseSD=true
-; Browse and copy files from SYSTEM partition
+; Durchsuchen und Kopieren von Dateien von der SYSTEM-Partition
 BrowseSystem=false
-; Browse and copy files from USER partition
+; Durchsuchen und Kopieren von Dateien von der USER-Partition
 BrowseUser=false
-; Browse and install files from USB flash drives and HDD
+; Durchsuchen und Installieren von Dateien von USB-Flash-Laufwerken und HDD
 USBHost=true
-; Browse and install files from PC via dbibackend
+; Durchsuchen und Installieren von Dateien vom PC über dbibackend
 BackendInstall=true
-; Install game from inserted game cartridge
+; Spiel von eingelegter Spielkassette installieren
 GameCard=true
-; Browse and install files from configured network sources
+; Durchsuchen und Installieren von Dateien von konfigurierten Netzwerkquellen
 Network=true
-; Browse and install files from configured sd card folders
+; Durchsuchen und Installieren von Dateien von konfigurierten SD-Kartenordnern
 Local=true
-; Browse installed applications
+; Installierte Anwendungen durchsuchen
 BrowseApps=true
-; Clean up files left from bad installs/old updates/unused tickets and so on
+; Aufräumen von Dateien von schlechten Installationen/alten Updates/unbenutzten Tickets usw.
 Cleanup=true
-; Check for app updates
+; Nach App-Updates suchen
 UpdateCheck=true
-; View where you can view or delete installed tickets
+; Anzeigen, wo installierte Tickets angezeigt oder gelöscht werden können
 Tickets=false
-; View where you can view or delete game saves
+; Anzeigen, wo Spielstände angezeigt oder gelöscht werden können
 Saves=true
-; MTP responder
+; MTP-Responder
 MTP=true
-; FTP Server
+; FTP-Server
 FTP=true
 
 [Applications]
-; Whether check or not LFS mod size
+; Ob LFS-Mod-Größe überprüft wird oder nicht
 CalculateLFSSize=false
 
-; Install options
+; Installationsoptionen
 [Install]
-; Check NCA hash during install
+; Überprüfen des NCA-Hash während der Installation
 CheckHash=true
-; Use chunked HTTP transfer (good in bad environments)
+; Chunked HTTP-Übertragung verwenden (gut in schlechten Umgebungen)
 ChunkedTransfer=true
 
-; MTP options
+; MTP-Optionen
 [MTP]
-; Log all files, if disabled transfer shows only for files >= 2M
+; Alle Dateien protokollieren, wenn deaktiviert, wird nur für Dateien >= 2 MB übertragen
 LogAllFiles=false
-; Show or not NSP that includes base game, latest update and all DLC in single multi-title file
+; NSP anzeigen, das Basisspiel, neuestes Update und alle DLCs in einer einzigen Multi-Titel-Datei enthält
 ShowCombinedNSP=true
-; Show or not virtual "Mods & cheats" folder that redirects to sdmc:/atmosphere/contents/TITLEID
+; Virtuellen "Mods & Cheats"-Ordner anzeigen, der auf sdmc:/atmosphere/contents/TITLEID umleitet
 ShowMAC=true
-; Use TitleID for "Mods & cheats" folder
+; TitleID für "Mods & Cheats"-Ordner verwenden
 MACasTID=true
-; Show user defined shortcuts to MircoSD folders as separate storages
+; Benutzerdefinierte Verknüpfungen zu MircoSD-Ordnern als separate Speicher anzeigen
 CustomStorages=true
-; Turn screen off on start MTP mode
+; Bildschirm beim Starten des MTP-Modus ausschalten
 TurnOffScreen=false
-; Report android extension (some initiators thinks that android has bugs)
+; Android-Erweiterungen melden (einige Initiator denken, dass Android Fehler hat)
 ReportAndroidExtension=true
 
-; FTP options
+; FTP-Optionen
 [FTP]
-; Turn screen off on start FTP mode
+; Bildschirm beim Starten des FTP-Modus ausschalten
 TurnOffScreen=false
-; Start local access point for FTP server
+; Lokalen Zugriffspunkt für FTP-Server starten
 UseAP=false
-; Read file modification time (can slow down on large dirs)
+; Dateiänderungszeit lesen (kann bei großen Verzeichnissen verlangsamt
+
+ werden)
 ReadMT=false
 
-; Access point options
+; Access-Point-Optionen
 [Access point]
 SSID=
 Password=
 Use5GHz=true
 Hidden=false
 
-;Enable or disable various MTP storages
+; Ein- oder Ausschalten verschiedener MTP-Speicher
 [MTP Storages]
-1: SD Card=true
+1: SD-Karte=true
 2: Nand USER=false
 3: Nand SYSTEM=false
-4: Installed games=true
-5: SD Card install=true
-6: NAND install=true
-7: Saves=true
+4: Installierte Spiele=true
+5: SD-Karte installieren=true
+6: NAND installieren=true
+7: Spielstände=true
 8: Album=true
-9: Gamecard=true
+9: Spielkassette=true
 
-; Network install sources
+; Netzwerk-Installationsquellen
 [Network sources]
-; <display name>=<type>|<URL>
-; NSP Indexer=URLList|http://192.168.1.47/nspindexer/index.php?DBI
-; Home server=ApacheHTTP|http://192.168.1.47/Nintendo/Switch/
-; Test FTP=FTP|ftp://anonymous:password@192.168.1.24:2121/
+; <Anzeigename>=<Typ>|<URL>
+; NSP-Indexer=URLList|http://192.168.1.47/nspindexer/index.php?DBI
+; Heimserver=ApacheHTTP|http://192.168.1.47/Nintendo/Switch/
+; Test-FTP=FTP|ftp://anonymous:password@192.168.1.24:2121/
 
-; Main menu shortcuts to SD card locations
+; Hauptmenüverknüpfungen zu SD-Kartenstandorten
 [Local sources]
-; <display name>=<path>
+; <Anzeigename>=<Pfad>
 Homebrew=sdmc:/switch
-; Contents=sdmc:/atmosphere/contents
-; DBILogs=sdmc:/switch/DBI/logs
+; Inhalte=sdmc:/atmosphere/contents
+; DBI-Protokolle=sdmc:/switch/DBI/logs
 
 [MTP custom storages]
-; <display name>=<path>
+; <Anzeigename>=<Pfad>
 Homebrew=sdmc:/switch/
 Screenshots=sdmc:/Nintendo/Album/
 
-; Override for display name
-; <UPPERCASED TID>=<Desired name>
+; Überschreiben des Anzeigenamens
+; <GROSSGESCHRIEBENE TID>=<Gewünschter Name>
 [Title name override]
 ; 010023901191C000=Naheulbeuk
 ```
 
-The description of each item separately can be found in the [DBI settings](#configuration-and-dbiconfig-parameters) section.
+Die Beschreibung jedes Elements findest du im Abschnitt [DBI Einstellungen](#configuration-and-dbiconfig-parameters).
 
-## Other options
+### Montage des Inhalts installierter Titel über MTP
 
-### Mounting the content of installed titles via MTP
+1. Gehe zu "**Installierte Anwendungen durchsuchen**" -> Wähle die Apps aus, die du mit **(X)** montieren möchtest -> Drücke **(+)** -> "**Inhalte über MTP freigeben**"
 
-Go to "**Browse installed applications**" -> Choose apps you need to mount with **(X)** -> Press **(+)** -> "**Expose contents via MTP**"
+### Sicherung und Wiederherstellung von Spielständen über MTP
 
-### Backup and Restore Saves via MTP
+1. Verbinde deine Konsole im MTP-Modus über DBI.
+2. Navigiere zum **Saves**-Ordner auf deinem PC.
+3. Du kannst entweder deine Spielstände auf deinem PC kopieren oder sie einfach durch Ziehen in diesen Ordner wiederherstellen.
 
-1. Connect your console in MTP mode via DBI.
-1. Navigate to the **Saves** folder on your PC.
-1. You can either copy your saves to your PC or restore them by simply dragging them into this folder.
+### Verwendung von DBI zur Installation von Mods
 
-### Using DBI to Install Mods
-
-1. Connect to your computer via MTP mode in DBI
-1. Go to **Installed Games**, in the folder with the name of your game
-1. Go to **Mods & Cheats** folder
-1. Place your mod in the **Mods & Cheats** folder
-* **Be careful**, you need to ensure that you copy the contents of the titleID folder and not the titleID folder itself! For example, you downloaded a translation for the game Cadence of Hyrule, in the form of the archive `Cadence of Hyrule.rar`. Inside this archive you see a folder with the titleID of the game - `01000B900D8B0000`. You need to extract the archive, go to the folder `01000B900D8B0000` and copy the entire **contents** of the folder to **Mods & Cheats**! Not the folder `01000B900D8B0000` itself, but everything inside it! In this example (and in most cases), that would be the `romfs` folder
-
-### USB 3.0 
-
-DBI supports USB 3.0. If you are using kefir, then USB 3.0 is active by default. Otherwise, you need to activate this function by uncommenting and editing the Atmosphere system settings configuration file at `sdmc:/atmosphere/config/system_settings.ini` as follows:
+1. Verbinde dich im MTP-Modus über DBI mit deinem Computer.
+2. Gehe zu **Installierte Spiele**, in den Ordner mit dem Namen deines Spiels.
+3. Gehe zum Ordner **Mods & Cheats**.
+4. Platziere deinen Mod im **Mods & Cheats**-Ordner.
+   * **Sei vorsichtig**, du musst sicherstellen, dass du den Inhalt des TitelID-Ordners kopierst und nicht den TitelID-Ordner selbst! Zum Beispiel hast du eine Übersetzung für das Spiel Cadence of Hyrule heruntergeladen, in Form des Archivs `Cadence of Hyrule.rar`. In diesem Archiv siehst du einen Ordner mit der TitelID des Spiels - `01000B900D8B0000`. Du musst das Archiv extrahieren, zum Ordner `01000B900D8B0000` gehen und den gesamten Inhalt des Ordners **in** den **Mods & Cheats**-Ordner kopieren! Nicht den Ordner `01000B900D8B0000` selbst, sondern alles darin! In diesem Beispiel (und in den meisten Fällen) wäre das der `romfs`-Ordner.
+   
+   ### USB 3.0 
+   
+   DBI unterstützt USB 3.0. Wenn du Kefir verwendest, ist USB 3.0 standardmäßig aktiviert. Andernfalls musst du diese Funktion aktivieren, indem du die Atmosphäre-Systemeinstellungen in der Konfigurationsdatei unter `sdmc:/atmosphere/config/system_settings.ini` wie folgt kommentierst und bearbeitest:
 
 ```
 [usb]
 usb30_force_enabled = u8!0x1
 ```
 
-**Important** - activating USB 3.0 can interfere with bluetooth and 2.4GHz wifi connections. If you experience any connection issues with your wireless controllers or 2.4GHz wifi networks then you should not activate USB 3.0. 5GHz wifi connections should be generally unaffacted.
+**Wichtig** - Die Aktivierung von USB 3.0 kann die Bluetooth- und 2,4-GHz-WLAN-Verbindungen stören. Wenn du Probleme mit drahtlosen Controllern oder 2,4-GHz-WLAN-Netzwerken hast, solltest du USB 3.0 nicht aktivieren. 5-GHz-WLAN-Verbindungen sollten in der Regel nicht betroffen sein.
 
-### Restoring clean user saves from backup
+### Wiederherstellen sauberer Benutzerspeicherstände aus dem Backup
 
-These are decrypted saves that are located in the `USER:/saves` folder. In case the emunand is damaged, these saves can be retrieved through a PC or Tegra Explorer and restored through DBI.
+Diese sind entschlüsselte Speicherstände, die sich im `USER:/saves`-Ordner befinden. Falls die Emunand beschädigt ist, können diese Speicherstände über einen PC oder Tegra Explorer abgerufen und über DBI wiederhergestellt werden.
 
-You can place these saves in the backup saves folder of DBI (`/switch/dbi/saves` by default) and restore them through the standard save restoration menu (the user's name will be enclosed in curly brackets `{}` in this case), or through the context menu invoked on the file of such a save.
+Du kannst diese Speicherstände im Backup-Speicherordner von DBI platzieren (`/switch/dbi/saves` standardmäßig) und sie durch das Standard-Speicherwiederherstellungsmenü wiederherstellen (in diesem Fall wird der Benutzername in geschweiften Klammern `{}` eingeschlossen), oder durch das Kontextmenü, das durch Klicken auf die Datei eines solchen Speicherstandes aufgerufen wird
 
-### Set picture as avatar
+### Bild als Avatar festlegen
 
-Hover over the desired picture and bring up the context menu with the (+) button. Select "**Set as avatar...**". The selected image will be set as your avatar. The image will be automatically resized to square proportions and scaled down to the necessary size. If you want the image to maintain its original aspect ratio, prepare it in advance.
+Fahre mit dem Cursor über das gewünschte Bild und rufe das Kontextmenü mit der (+)-Taste auf. Wähle "**Als Avatar festlegen...**" aus. Das ausgewählte Bild wird als dein Avatar festgelegt. Das Bild wird automatisch auf quadratische Proportionen skaliert und auf die erforderliche Größe verkleinert. Wenn du möchtest, dass das Bild sein ursprüngliches Seitenverhältnis beibehält, bereite es im Voraus vor.
 
-### Editing and Viewing Files 
+### Bearbeiten und Anzeigen von Dateien
 
-Any file can be opened as a text or as HEX. Non-empty files are opened in viewing mode, however, the (L3) key will switch to editing mode. Let's consider both modes separately. 
+Jede Datei kann als Text oder HEX geöffnet werden. Nicht leere Dateien werden im Anzeigemodus geöffnet, jedoch schaltet die (L3)-Taste in den Bearbeitungsmodus um. Betrachten wir beide Modi separat.
 
-You can also create an empty text file from the context menu (called by the (+) button > **Create a new file...**). When opening an empty text file, the editor will start automatically.
+Du kannst auch eine leere Textdatei aus dem Kontextmenü erstellen (aufgerufen durch die (+)-Taste > **Neue Datei erstellen...**). Beim Öffnen einer leeren Textdatei wird der Editor automatisch gestartet.
 
-#### File Viewing Mode 
+#### Dateianzeigemodus
 
-**Hotkeys:** 
-* **DPAD / Left Stick / Right Stick** - text scrolling 
-* **(L) / (R) / (ZL) / (ZR)** - next / previous page (screen)
-* **(R3)** - switch between text or HEX viewing modes
-* **(L3)** - switch to editing mode
-* **(+)** - context menu
+**Tastenkombinationen:**
+- **DPAD / Linker Stick / Rechter Stick** - Textscrollen
+- **(L) / (R) / (ZL) / (ZR)** - Nächste / Vorherige Seite (Bildschirm)
+- **(R3)** - Umschalten zwischen Text- oder HEX-Anzeigemodi
+- **(L3)** - Wechsel in den Bearbeitungsmodus
+- **(+)** - Kontextmenü
 
-**Context Menu:**
-* **Editing** - switch to editing mode
-* **Encoding** - change text encoding. Note that when changing the encoding in viewing mode, when the file is closed and reopened, the encoding will not change
-* **Line Wrapping** - whether or not to wrap text to a new line when it reaches the edge of the screen
+**Kontextmenü:**
+- **Bearbeiten** - Wechsel in den Bearbeitungsmodus
+- **Kodierung** - Ändern der Textkodierung. Beachte, dass beim Ändern der Kodierung im Anzeigemodus, nachdem die Datei geschlossen und erneut geöffnet wurde, die Kodierung nicht geändert wird.
+- **Zeilenumbrechung** - ob der Text bei Erreichen des Bildschirmrands in eine neue Zeile umbrochen werden soll oder nicht
 
-#### File Editing Mode 
+#### Dateibearbeitungsmodus
 
-You can edit text by moving around the keyboard with the right stick and selecting a letter with the (A) button.
+Du kannst Text bearbeiten, indem du mit dem rechten Stick auf der Tastatur navigierst und einen Buchstaben mit der (A)-Taste auswählst.
 
-**Hotkeys:** 
-* **Right Stick** - move around the keyboard
-* **DPAD / Left Stick** - move around the text
-* **(A)** - select the highlighted character on the keyboard
-* **(X)** - delete character (Backspace)
-* **(B)** - file saving menu
-* **(Y)** - space
-* **(L)+(LEFT)** - Go to the beginning of the line (HOME)
-* **(L)+(RIGHT)** - Go to the end of the line (END)
-* **(R)+(LEFT)** - Go to the next word
-* **(R)+(RIGHT)** - Go to the previous word
-* **(ZL)** - change case 
-* **(ZR)** - move to the next line (Enter)
-* **(R3)** - switch language 
-* **(L3)** - switch to viewing mode 
+**Tastenkombinationen:**
+- **Rechter Stick** - Bewegen auf der Tastatur
+- **DPAD / Linker Stick** - Bewegen im Text
+- **(A)** - Auswahl des markierten Zeichens auf der Tastatur
+- **(X)** - Löschen des Zeichens (Rücktaste)
+- **(B)** - Menü zum Speichern der Datei
+- **(Y)** - Leertaste
+- **(L)+(LINKS)** - Springe zum Anfang der Zeile (HOME)
+- **(L)+(RECHTS)** - Springe zum Ende der Zeile (END)
+- **(R)+(LINKS)** - Gehe zum nächsten Wort
+- **(R)+(RECHTS)** - Gehe zum vorherigen Wort
+- **(ZL)** - Groß-/Kleinschreibung ändern
+- **(ZR)** - Gehe zur nächsten Zeile (Enter)
+- **(R3)** - Sprache wechseln
+- **(L3)** - Wechsel in den Anzeigemodus
 
-When closing a file or switching to viewing mode, you can choose whether or not to save changes if changes were made to the file.
+Beim Schließen einer Datei oder Wechseln in den Anzeigemodus kannst du wählen, ob Änderungen gespeichert werden sollen, wenn Änderungen an der Datei vorgenommen wurden.
 
-## Acknowledgements
-Thanks to [SciresM](https://github.com/SciresM) for [hactool](https://github.com/SciresM/hactool) (licensed under [ISC](https://en.wikipedia.org/wiki/ISC_license)) - DBI uses some data struct definitions from there
+## Danksagungen
+Vielen Dank an [SciresM](https://github.com/SciresM) für [hactool](https://github.com/SciresM/hactool) (lizenziert unter [ISC](https://de.wikipedia.org/wiki/ISC-Lizenz)) - DBI verwendet einige Datenstrukturdefinitionen von dort.
