@@ -3,7 +3,7 @@
 
 This guide is based on [Brikachu's work](https://4pda.to/forum/index.php?showtopic=939714&st=1100#Spoil-86288632-5).
 
-[РУССКИЙ / Russian guide](README.md)
+[РУССКИЙ / Russian guide](README_RUS.md)
 
 [German guide / Deutsche Anleitung](README_GER.md)
 
